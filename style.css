@@ -125,12 +125,12 @@ header {
   font-family: 'Lato', sans-serif;
   text-shadow: 1px 3px 13px #000;
 }
-
+/* 
 @media (max-width: 500px) {
   header {
-    /* font-size: 4vw; */
+    font-size: 4vw;
   }
-}
+} */
 
 header:hover {
   animation: stretchAnimation 1s ease-in-out infinite alternate;

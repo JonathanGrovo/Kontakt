@@ -42,7 +42,7 @@ if (isset($_POST["FirstName"])) { //checks that the user attempted to add a cont
     </form>
     <br>
     <?php
-    $severname = "mysql";
+    $severname = "localhost";
     $username = "testuser";
     $password = "testpassword";
     $dbname = "mytest";
