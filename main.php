@@ -1,26 +1,26 @@
 <?php
+// function for adding an entry into the table
 function addentry($firstname, $lastname, $email, $phonenumber)
-{ //This function is about adding in a entry into the table
+{
     $server = 'localhost';
     $user = 'testuser';
     $password = 'testpassword';
     $dbname = 'mytest';
-    $person = $_SESSION['user']; //This pulls in the user session
+    $person = $_SESSION['user']; // this pulls in the user session
 
     $conn = new mysqli($server, $user, $password, $dbname);
     if ($conn->connect_error) {
         die("Database connection failed: " . $conn->connect_error);
-    } //see login.php for information about the above lines
+    } // see login.php for information about the above lines
 
-    $sql = "INSERT INTO contacts VALUES ('$person', '$firstname', '$lastname', '$email', '$phonenumber') "; //Mysql code which will add the entry
-    $conn->query($sql); //run the mysql code
+    $sql = "INSERT INTO contacts VALUES ('$person', '$firstname', '$lastname', '$email', '$phonenumber') "; // mysql code which will add the entry
+    $conn->query($sql); // run the mysql code
     $conn->close();
 }
 
 session_start();
-if (isset($_POST["FirstName"])) { //checks that the user attempted to add a contact PLEASE NOTE: This only checks that fistname was set which means the user could enter nothing this is not a good exampe of how it should be done
-    addentry($_POST["FirstName"], $_POST["LastName"], $_POST["email"], $_POST["phonenumber"]); //runs the addentry function
-}
+// this should only execute when all fields have been entered
+addentry(($_POST["FirstName"]), ($_POST["LastName"]), ($_POST["email"]), ($_POST["phonenumber"]));
 
 ?>
 <html>
@@ -29,13 +29,14 @@ if (isset($_POST["FirstName"])) { //checks that the user attempted to add a cont
     <!-- The hyperlink just runs logout.php -->
     <a href="logout.php">logout</a>
     <!-- This following form is for adding a new entry, because the action is empty it calls this page -->
-    <form action="" method="post">
+    <form id="contactForm" action="" method="post">
         FirstName: <input type="text" name="FirstName"><br>
         LastName: <input type="text" name="LastName"><br>
         email: <input type="text" name="email"><br>
         phone number: <input type="text" name="phonenumber"><br>
-        <input type="submit">
+        <input type="submit" value="Submit">
     </form>
+
     <!-- The form below is the search bar form it uses the get method which means its variables are in $_GET -->
     <form method="get">
         <input type="text" name="search"><button type="submit">Search</button>
@@ -72,6 +73,8 @@ if (isset($_POST["FirstName"])) { //checks that the user attempted to add a cont
     }
     $conn->close();
     ?>
+
+    <script src="script.js"></script>
 </body>
 
 </html>

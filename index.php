@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Contact Manager Group 20" />
     <title>Contact Manager</title>
-    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+    <!-- <link rel="icon" type="image/x-icon" href="media/favicon.ico" /> -->
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&display=swap" />
