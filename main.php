@@ -20,8 +20,16 @@ function addentry($firstname, $lastname, $email, $phonenumber)
 
 session_start();
 // this should only execute when all fields have been entered
-addentry(($_POST["FirstName"]), ($_POST["LastName"]), ($_POST["email"]), ($_POST["phonenumber"]));
 
+// if the request method being used is POST
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    // check to ensure all fields are not empoty before adding entry
+    if (empty($_POST["FirstName"]) || empty($_POST["LastName"]) || empty($_POST["email"]) || empty($_POST["phonenumber"])) {
+        echo "Please fill in all fields";
+    } else { // in the case that all the fields have values
+        addentry(($_POST["FirstName"]), ($_POST["LastName"]), ($_POST["email"]), ($_POST["phonenumber"]));
+    }
+}
 ?>
 <html>
 
