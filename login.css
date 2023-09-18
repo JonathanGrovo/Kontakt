@@ -15,7 +15,9 @@ body {
     align-items: center;
     min-height: 100vh;
     /* background: url(media/desert-background.jpg) no-repeat; */
-    background: linear-gradient(rgb(28, 115, 228) 0%, rgb(0, 10, 70) 70%);
+    /* background: linear-gradient(rgb(28, 115, 228) 0%, rgb(0, 10, 70) 70%); */
+    /* background: red; */
+    background: 	#36393e;
     background-size: cover;
     background-position: center;
 }
@@ -62,11 +64,29 @@ body {
 
 .input-box i {
     position: absolute;
-    right: 20px;
+    /* right: 20px; */
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;    
 }
+
+/* applies specifically to username icon */
+.input-box .bx {
+    right: 20px;
+}
+
+.input-box .fa-eye {
+    cursor: pointer;
+    position: absolute;
+    right: 19px;
+    top: 50%;
+}
+
+.input-box .fa-eye-slash {
+    cursor: pointer;
+    right: 17.8px;
+}
+
 
 .wrapper .remember-forgot {
     display: flex;
@@ -127,3 +147,4 @@ body {
     height: 100%;
     z-index: -1; /* place canvas behind other content */
 }
+

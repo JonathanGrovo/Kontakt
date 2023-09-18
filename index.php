@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&display=swap" />
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" crossorigin="anonymous">
+
 
 </head>
 
@@ -43,8 +45,8 @@
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password" required>
-                <i class='bx bxs-lock-alt'></i>
+                <input type="password" id="passwordField" placeholder="Password" required>
+                <i class='toggle-password fa-regular fa-eye'></i>
             </div>
             <div class="remember-forgot">
                 <label><input type="checkbox"> Remember me</label>
@@ -60,15 +62,17 @@
     </div>
 
     <?php
-    if (isset($_GET["error"])) { //this line checks to see if the user enter an invalid user via the get method, which means that in the url you will see ?error=<something>
+    if (isset($_GET["error"])) { // this line checks to see if the user enter an invalid user via the get method, which means that in the url you will see ?error=<something>
         echo 'invalid user';
     }
-    if (isset($_GET["newuser"])) { //same as before just uses a diffrent variable these 2 if statements can be combined into one
+    if (isset($_GET["newuser"])) { // same as before just uses a diffrent variable these 2 if statements can be combined into one
         echo 'username taken';
     }
     ?>
-    <!-- Script for background animation -->
+    <!-- script for background animation -->
     <script src="particles.js"></script>
+    <!-- scripts related to other landing page interactions -->
+    <script src="landingScripts.js"></script>
 </body>
 
 </html>
