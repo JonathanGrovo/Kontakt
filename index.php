@@ -19,11 +19,13 @@
 
 <body>
     <canvas id="backgroundCanvas"></canvas>
+    <!-- <div id="imageContainer">
+        <img id="myImage" src="media/desert-background.jpg" alt="desert image">
+    </div> -->
     <!-- <noscript>
         moving particles (?)
     </noscript> -->
     <!-- <canvas id="canvas1"></canvas> -->
-    <!-- The Form below is for returning users, it uses the post method which means the data does not appear on the url the action sends the user to login.php -->
     <!-- <form action="login.php" method="post">
         username: <input type="text" name="username"><br>
         password: <input type="text" name="password"><br>
@@ -37,15 +39,17 @@
         <input type="submit">
     </form> -->
 
+    <!-- wraps the entire login box -->
     <div class="wrapper">
-        <form action="">
+        <!-- The Form below is for returning users, it uses the post method which means the data does not appear on the url the action sends the user to login.php -->
+        <form action="login.php" method="post">
             <h1>Login</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <input type="text" placeholder="Username" name="username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" id="passwordField" placeholder="Password" required>
+                <input type="password" id="passwordField" placeholder="Password" name="password" required>
                 <i class='toggle-password fa-regular fa-eye'></i>
             </div>
             <div class="remember-forgot">
@@ -56,7 +60,7 @@
             <button type="submit" class="btn">Login</button>
 
             <div class="register-link">
-                <p>Don't have an account? <a href="#">Register</a></p>
+                <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
         </form>
     </div>
@@ -65,7 +69,7 @@
     if (isset($_GET["error"])) { // this line checks to see if the user enter an invalid user via the get method, which means that in the url you will see ?error=<something>
         echo 'invalid user';
     }
-    if (isset($_GET["newuser"])) { // same as before just uses a diffrent variable these 2 if statements can be combined into one
+    if (isset($_GET["newuser"])) { // same as before just uses a different variable these 2 if statements can be combined into one
         echo 'username taken';
     }
     ?>

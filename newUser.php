@@ -26,6 +26,6 @@ if ($results->num_rows == 0) { // if we find no users by that name
     header("Location: main.php"); // user sent to main page where CRUD operations can be performed
     exit();
 } else { // if there is at least 1 row, a user exists with the same username
-    header("Location: index.php?newuser=failed"); // sent back to login page with error sign
+    header("Location: register.php?newuser=failed"); // sends user back to registration page with fail message
     exit();
 }

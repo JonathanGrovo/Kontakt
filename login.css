@@ -18,8 +18,8 @@ body {
     /* background: linear-gradient(rgb(28, 115, 228) 0%, rgb(0, 10, 70) 70%); */
     /* background: red; */
     background: 	#36393e;
-    background-size: cover;
-    background-position: center;
+    /* background-size: cover;
+    background-position: center; */
 }
 
 .wrapper {
