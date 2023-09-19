@@ -21,9 +21,9 @@ $results = $conn->query($sql); // runs the query and stores results in variable
 if ($results->num_rows == 1) { // checks the amount of rows returned and if it is one than we know their account exists
     $row = $results->fetch_assoc(); // this fetches the next row, but in our case the only row
     $_SESSION['user'] = $row['user']; // this sets the session user to their user
-    header("Location: main.php"); // this code sends them to the main page
-    exit(); // forces them out of this page so they go to main
+    // success flag just determines whether or not the query was successful
+    echo json_encode(["success" => true]);
 } else {
-    header("Location: index.php?error=invalid"); // this occurs when their account doesn't exist and sends them to the login page and causes an error message to appear
-    exit();
+    // error message included in json response
+    echo json_encode(["success" => false, "message" => "Invalid username or password"]);
 }

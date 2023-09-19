@@ -1,6 +1,16 @@
 /* imports a google font family */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 
+/* animation for fading elements in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 /* setting base style properties */
 * {
     margin: 0;
@@ -33,6 +43,15 @@ body {
     padding: 30px 40px;
 }
 
+.fadeable {
+    opacity: 0;
+}
+
+.fade-in {
+    opacity: 0; /* initial opacity */
+    animation: fadeIn 0.5s ease-in-out forwards; /* defining the transition */
+}
+
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
@@ -59,7 +78,7 @@ body {
 }
 
 .input-box input::placeholder {
-    color: #fff;
+    color: #ffffffc4;
 }
 
 .input-box i {
@@ -127,6 +146,10 @@ body {
     font-size: 14.5px;
     text-align: center;
     margin: 20px 0 15px;
+}
+
+.register-link p {
+    color: #ffffffc4;
 }
 
 .register-link p a {

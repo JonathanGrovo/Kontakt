@@ -68,6 +68,8 @@ class Particle {
     draw(context){
         context.beginPath();
         context.arc(this.x, this.y, this.radius, 0, Math.PI *2);
+        // this.opacity used for opacity property
+        context.fillStyle = `rgba( 114, 137, 218, ${this.opacity * context.globalAlpha})`;
         context.fill();
     }
     update(){
@@ -85,6 +87,7 @@ class Effect {
         this.height = this.canvas.height;
         this.particles = [];
         this.numberOfParticles = 150;
+        this.globalAlpha = 0; // initial opacity
         this.createParticles();
     }
     createParticles(){
@@ -93,6 +96,14 @@ class Effect {
         }
     }
     handleParticles(context){
+        // gradually increase global alpha
+        if (this.globalAlpha < 1) {
+            this.globalAlpha += 0.001; // rate at which global alpha increases
+            context.globalAlpha = this.globalAlpha; // context global alpha change
+        } else {
+            context.globalAlpha = 1; // ensure the global alpha of context is 1
+        }
+
         this.connectParticles(context);
         this.particles.forEach(particle => {
             particle.draw(context);
@@ -108,7 +119,8 @@ class Effect {
                 const distance = Math.hypot(dx, dy);
                 if (distance < maxDistance){
                     context.save();
-                    const opacity = 1 - (distance/maxDistance);
+                    // opacity is dependent on both distance and current global alpha value
+                    const opacity = (1 - (distance/maxDistance)) * context.globalAlpha;
                     context.globalAlpha = opacity;
                     context.beginPath();
                     context.moveTo(this.particles[a].x, this.particles[a].y);

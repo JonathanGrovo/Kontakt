@@ -1,3 +1,5 @@
+// script for toggling the eye icon for the password
+
 const passwordField = document.getElementById('passwordField');
 // const passwordField = document.getElementsByClassName('passwordField');
 const togglePassword = document.querySelector('.toggle-password');
@@ -13,3 +15,26 @@ togglePassword.addEventListener('click', function () {
         togglePassword.classList.add('fa-eye'); // change icon to eye
     }
 })
+
+// script for fading in elements on page load
+
+// Wait for the document to fully load
+document.addEventListener("DOMContentLoaded", function() {
+    requestAnimationFrame(function() {
+
+        const fadeElements = document.querySelectorAll(".fadeable");
+
+        fadeElements.forEach(function(element, index) {
+
+            const delay = index * 200; // rate at which elements are faded in
+
+            setTimeout(function() {
+                element.classList.add("fade-in");
+
+            }, delay);
+        })
+    })
+});
+
+
+

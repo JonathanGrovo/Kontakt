@@ -40,26 +40,26 @@
     </form> -->
 
     <!-- wraps the entire login box -->
-    <div class="wrapper">
+    <div class="wrapper fadeable">
         <!-- The Form below is for returning users, it uses the post method which means the data does not appear on the url the action sends the user to login.php -->
         <form action="login.php" method="post">
-            <h1>Login</h1>
-            <div class="input-box">
+            <h1 class="fadeable">Login</h1>
+            <div class="input-box fadeable">
                 <input type="text" placeholder="Username" name="username" required>
                 <i class='bx bxs-user'></i>
             </div>
-            <div class="input-box">
+            <div class="input-box fadeable">
                 <input type="password" id="passwordField" placeholder="Password" name="password" required>
                 <i class='toggle-password fa-regular fa-eye'></i>
             </div>
-            <div class="remember-forgot">
+            <div class="remember-forgot fadeable">
                 <label><input type="checkbox"> Remember me</label>
                 <!-- <a href="#">Forgot password?</a> -->
             </div>
 
-            <button type="submit" class="btn">Login</button>
+            <button type="submit" class="btn fadeable">Login</button>
 
-            <div class="register-link">
+            <div class="register-link fadeable">
                 <p>Don't have an account? <a href="register.php">Register</a></p>
             </div>
         </form>
