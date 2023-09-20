@@ -12,10 +12,18 @@ if ($conn->connect_error) { // checks for successful connection
     die("Database connection failed: " . $conn->connect_error);
 }
 
-$person = $_POST['username']; // this pulls in what the user put in for username, any variables that are posted can be found in $_POST['name']
-$pass = $_POST['password']; // this is the users password
+// gets the raw POST data
+$data = file_get_contents('php://input');
+
+// decode JSON data
+$jsonData = json_decode($data, true); // true as second parameter returns an associative array
+
+// access the username and password
+$person = $jsonData['username'];
+$pass = $jsonData['password'];
 
 $sql = "SELECT * FROM users WHERE user='$person' AND password='$pass'"; // this is the code to be run in sql it asks for all entries into the table users where the user is the username entered and password is the password entered
+
 $results = $conn->query($sql); // runs the query and stores results in variable
 
 if ($results->num_rows == 1) { // checks the amount of rows returned and if it is one than we know their account exists

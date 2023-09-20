@@ -50,7 +50,7 @@
             <!-- confirm password field -->
             <div class="input-box fadeable">
                 <input type="password" class="confirmPassword" placeholder="Confirm Password" name="confirmPassword" required>
-                <i class='toggle-password fa-regular fa-eye'></i>
+                <i class='toggle-password fa-solid fa-lock'></i>
             </div>
             <div class="remember-forgot fadeable">
                 <label><input type="checkbox"> Remember me</label>

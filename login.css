@@ -11,6 +11,22 @@
     }
 }
 
+/* animation for fading in and out error text */
+@keyframes errorFade {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 /* setting base style properties */
 * {
     margin: 0;
@@ -57,12 +73,41 @@ body {
     text-align: center;
 }
 
+.error-message {
+    /* width: 100%;
+    height: 30px;
+    margin: 30px 0;
+    justify-content: center; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 15px;
+    margin-top: 5px;
+    color: rgb(255, 89, 67);
+    opacity: 0; /* initially invisible */
+    visibility: hidden; /* initially hide element */
+    transition: opacity 0.75s ease-in-out; /* defining the transition */
+}
+
+.error-message-display {
+    /* opacity: 1; */
+    visibility: visible;
+    animation: errorFade 3s ease-in-out;
+}
+
 .wrapper .input-box {
     position: relative;
     width: 100%;
     height: 50px;
     margin: 30px 0;
 }
+
+#input-box-username {
+    margin: 15px 0 30px 0;
+}
+
+
 
 .input-box input {
     width: 100%;
@@ -106,6 +151,11 @@ body {
     right: 17.8px;
 }
 
+/* display lock on register page */
+.input-box .fa-lock {
+    right: 23px;
+    font-size: 18px;
+}
 
 .wrapper .remember-forgot {
     display: flex;

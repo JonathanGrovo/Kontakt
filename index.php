@@ -42,10 +42,11 @@
     <!-- wraps the entire login box -->
     <div class="wrapper fadeable">
         <!-- The Form below is for returning users, it uses the post method which means the data does not appear on the url the action sends the user to login.php -->
-        <form action="login.php" method="post">
+        <form onsubmit="event.preventDefault(); loginUser();">
             <h1 class="fadeable">Login</h1>
-            <div class="input-box fadeable">
-                <input type="text" placeholder="Username" name="username" required>
+            <div class="error-message"></div>
+            <div class="input-box fadeable" id="input-box-username">
+                <input type="text" id="usernameField" placeholder="Username" name="username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box fadeable">
@@ -77,6 +78,8 @@
     <script src="particles.js"></script>
     <!-- scripts related to other landing page interactions -->
     <script src="landingScripts.js"></script>
+    <!-- scripts related to login actions -->
+    <script src="loginScripts.js"></script>
 </body>
 
 </html>
