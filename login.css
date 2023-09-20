@@ -27,6 +27,16 @@
     }
 }
 
+/* spin animation on useless icon hover */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* setting base style properties */
 * {
     margin: 0;
@@ -40,12 +50,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* background: url(media/desert-background.jpg) no-repeat; */
-    /* background: linear-gradient(rgb(28, 115, 228) 0%, rgb(0, 10, 70) 70%); */
-    /* background: red; */
     background: 	#36393e;
-    /* background-size: cover;
-    background-position: center; */
 }
 
 .wrapper {
@@ -74,10 +79,6 @@ body {
 }
 
 .error-message {
-    /* width: 100%;
-    height: 30px;
-    margin: 30px 0;
-    justify-content: center; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -107,8 +108,6 @@ body {
     margin: 15px 0 30px 0;
 }
 
-
-
 .input-box input {
     width: 100%;
     height: 100%;
@@ -128,7 +127,6 @@ body {
 
 .input-box i {
     position: absolute;
-    /* right: 20px; */
     top: 50%;
     transform: translateY(-50%);
     font-size: 20px;    
@@ -139,6 +137,11 @@ body {
     right: 20px;
 }
 
+.input-box .bx:hover {
+    top: 30%;
+    animation: spin 3s ease infinite;
+}
+
 .input-box .fa-eye {
     cursor: pointer;
     position: absolute;
@@ -146,9 +149,19 @@ body {
     top: 50%;
 }
 
+/* when normal eye is hovered */
+.input-box .fa-eye:hover {
+    color: rgb(160, 181, 255);
+}
+
 .input-box .fa-eye-slash {
     cursor: pointer;
     right: 17.8px;
+}
+
+/* when eye with slash through it is hovered */
+.input-box .fa-eye-slash:hover {
+    color: rgb(160, 181, 255);
 }
 
 /* display lock on register page */
@@ -157,25 +170,9 @@ body {
     font-size: 18px;
 }
 
-.wrapper .remember-forgot {
-    display: flex;
-    justify-content: space-between;
-    font-size: 14.5px;
-    margin: -15px 0 15px;
-}
-
-.remember-forgot label input {
-    accent-color: #fff;
-    margin-right: 3px;
-}
-
-.remember-forgot a {
-    color: #fff;
-    text-decoration: none;
-}
-
-.remember-forgot a:hover {
-    text-decoration: underline;
+.input-box .fa-lock:hover {
+    top: 32%;
+    animation: spin 3s ease infinite;
 }
 
 .wrapper .btn {
@@ -190,6 +187,7 @@ body {
     font-size: 16px;
     color: #333;
     font-weight: 600;
+    margin-top: 40px;
 }
 
 .wrapper .register-link {
@@ -209,6 +207,7 @@ body {
 }
 
 .register-link p a:hover {
+    color: rgb(160, 181, 255);
     text-decoration: underline;
 }
 
@@ -220,4 +219,15 @@ body {
     height: 100%;
     z-index: -1; /* place canvas behind other content */
 }
+
+/* input element focused */
+input:focus {
+    border-color: rgba( 114, 137, 218, 1);
+}
+
+/* input element hovered */
+input:hover {
+    background-color: rgba( 114, 137, 218, 0.2);
+}
+
 

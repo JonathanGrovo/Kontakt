@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Contact Manager Group 20" />
     <title>Contact Manager</title>
-    <!-- <link rel="icon" type="image/x-icon" href="media/favicon.ico" /> -->
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
     <!-- <link rel="stylesheet" href="style.css" /> -->
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap" />
@@ -52,10 +52,6 @@
             <div class="input-box fadeable">
                 <input type="password" id="passwordField" placeholder="Password" name="password" required>
                 <i class='toggle-password fa-regular fa-eye'></i>
-            </div>
-            <div class="remember-forgot fadeable">
-                <label><input type="checkbox"> Remember me</label>
-                <!-- <a href="#">Forgot password?</a> -->
             </div>
 
             <button type="submit" class="btn fadeable">Login</button>

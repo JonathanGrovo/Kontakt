@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
         fadeElements.forEach(function(element, index) {
 
-            const delay = index * 200; // rate at which elements are faded in
+            const delay = index * 80; // rate at which elements are faded in
 
             setTimeout(function() {
                 element.classList.add("fade-in");
