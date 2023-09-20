@@ -154,6 +154,11 @@ body {
     color: rgb(160, 181, 255);
 }
 
+/* when the normal eye is active */
+.input-box .fa-eye:active {
+    color: rgb(144, 189, 241);
+}
+
 .input-box .fa-eye-slash {
     cursor: pointer;
     right: 17.8px;
@@ -162,6 +167,11 @@ body {
 /* when eye with slash through it is hovered */
 .input-box .fa-eye-slash:hover {
     color: rgb(160, 181, 255);
+}
+
+/* when eye with slash through it is active */
+.input-box .fa-eye-slash:active {
+    color: rgb(144, 189, 241);
 }
 
 /* display lock on register page */
@@ -190,6 +200,25 @@ body {
     margin-top: 40px;
 }
 
+/* when register/login button hovered */
+.wrapper .btn:hover {
+    background-color: rgba( 114, 137, 218, 1);
+    border-style: none;
+    color: #fff;
+    box-shadow: 0 0 5px rgba( 114, 137, 218, 1),
+                0 0 5px rgba( 114, 137, 218, 1),
+                0 0 10px rgba( 114, 137, 218, 1),
+                0 0 10px rgba( 114, 137, 218, 1);
+}
+
+.wrapper .btn:active {
+    background-color: rgb(144, 189, 241);
+    box-shadow: 0 0 5px rgb(144, 189, 241),
+                0 0 5px rgb(144, 189, 241),
+                0 0 10px rgb(144, 189, 241),
+                0 0 10px rgb(144, 189, 241);
+}
+
 .wrapper .register-link {
     font-size: 14.5px;
     text-align: center;
@@ -209,6 +238,10 @@ body {
 .register-link p a:hover {
     color: rgb(160, 181, 255);
     text-decoration: underline;
+}
+
+.register-link p a:active {
+    color: rgb(144, 189, 241);
 }
 
 #backgroundCanvas {

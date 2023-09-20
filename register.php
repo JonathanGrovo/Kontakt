@@ -37,10 +37,11 @@
     <!-- wraps the entire login box -->
     <div class="wrapper fadeable">
         <!-- The Form below is for returning users, it uses the post method which means the data does not appear on the url the action sends the user to login.php -->
-        <form action="newUser.php" method="post">
+        <form onsubmit="event.preventDefault();">
             <h1>Register</h1>
-            <div class="input-box fadeable">
-                <input type="text" placeholder="Username" name="NewUser" required>
+            <div class="error-message"></div>
+            <div class="input-box fadeable" id="input-box-username">
+                <input type="text" id="usernameField" placeholder="Username" name="NewUser" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box fadeable">
