@@ -23,7 +23,7 @@ function resizeCanvas() {
     // canvas width and height are set to new window width and height
     // canvas.width = window.innerWidth;
     canvas.width  = document.documentElement.clientWidth; // ensures theres no horizontal scrollbar
-    canvas.height = window.innerHeight + window.scrollY; // accounts for scroll
+    canvas.height = window.innerHeight
 
     // recreate canvas gradiewnt
     gradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height);
