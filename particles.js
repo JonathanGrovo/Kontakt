@@ -8,11 +8,6 @@ canvas.height = window.innerHeight;
 let gradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height);
 
 //define color gradient for particles
-
-// gradient.addColorStop(0, 'rgba(200, 200, 1, 1)');
-// gradient.addColorStop(0.5, 'rgba(0, 300, 128, 1)');
-// gradient.addColorStop(0.7, 'rgba(100, 210, 210, 1)');
-// gradient.addColorStop(1, 'rgba(100, 210, 210, 0)');
 gradient.addColorStop(0, 'rgba( 114, 137, 218, 1)');
 gradient.addColorStop(0.8, 'rgba( 114, 137, 218, 1)');
 gradient.addColorStop(1, 'rgba( 114, 137, 218, 0)');
@@ -34,12 +29,6 @@ function resizeCanvas() {
     gradient = ctx.createLinearGradient(canvas.width / 2, 0, canvas.width / 2, canvas.height);
 
     // recreate gradient stop values
-
-    // gradient.addColorStop(0, 'rgba(200, 200, 1, 1)');
-    // gradient.addColorStop(0.5, 'rgba(0, 300, 128, 1)');
-    // gradient.addColorStop(0.7, 'rgba(100, 210, 210, 1)');
-    // gradient.addColorStop(1, 'rgba(100, 210, 210, 0)');
-
     gradient.addColorStop(0, 'rgba( 114, 137, 218, 1)');
     gradient.addColorStop(0.8, 'rgba( 114, 137, 218, 1)');
     gradient.addColorStop(1, 'rgba( 114, 137, 218, 0)');
