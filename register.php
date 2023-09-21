@@ -55,14 +55,6 @@
         </div>
     </div>
 
-    <?php
-    if (isset($_GET["error"])) { // this line checks to see if the user enter an invalid user via the get method, which means that in the url you will see ?error=<something>
-        echo 'invalid user';
-    }
-    if (isset($_GET["newuser"])) { // same as before just uses a different variable these 2 if statements can be combined into one
-        echo 'username taken';
-    }
-    ?>
     <!-- script for background animation -->
     <script src="particles.js"></script>
     <!-- scripts related to other landing page interactions -->

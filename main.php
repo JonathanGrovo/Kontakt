@@ -6,7 +6,7 @@ function addentry($firstname, $lastname, $email, $phonenumber)
     $user = 'testuser';
     $password = 'testpassword';
     $dbname = 'mytest';
-    $person = $_SESSION['user']; // this pulls in the user session
+    $person = $_SESSION['user']; // this pulls in the user session (the person signed in)
 
     $conn = new mysqli($server, $user, $password, $dbname);
     if ($conn->connect_error) {
