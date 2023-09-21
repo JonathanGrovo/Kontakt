@@ -22,7 +22,7 @@
         moving particles (?)
     </noscript>
     <div class="container">
-        <div class="login-title">
+        <div class="login-title fadeable">
             <h2>Contact Manager</h2>
             <h2>Contact Manager</h2>
         </div>
