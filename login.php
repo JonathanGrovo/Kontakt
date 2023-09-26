@@ -1,4 +1,5 @@
 <?php
+// this page is specifically for handling backend login logic
 // create user session
 session_start();
 $server = 'localhost'; // since testing locally

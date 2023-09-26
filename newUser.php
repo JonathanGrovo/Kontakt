@@ -1,4 +1,5 @@
 <?php
+// this page is specifically for backend registration logic
 // create user session
 session_start();
 $server = 'localhost';

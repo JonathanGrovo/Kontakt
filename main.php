@@ -13,6 +13,8 @@ function addentry($firstname, $lastname, $email, $phonenumber)
         die("Database connection failed: " . $conn->connect_error);
     } // see login.php for information about the above lines
 
+    // prob want to have some kind of response for when this user has already entered a contact with the same exact credentials
+
     $sql = "INSERT INTO contacts VALUES ('$person', '$firstname', '$lastname', '$email', '$phonenumber') "; // mysql code which will add the entry
     $conn->query($sql); // run the mysql code
     $conn->close();
