@@ -1,0 +1,57 @@
+<!-- this page handles all contact CRUD operations for users managing contacts -->
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Contact Manager Group 20" />
+    <!-- title that appears in tab -->
+    <title>Contact Manager</title>
+    <!-- icon that appears in tab -->
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
+    <!-- sheets used for styling the page -->
+    <link rel="stylesheet" href="login.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i&display=swap"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+      crossorigin="anonymous"
+    />
+  </head>
+
+  <body>
+    <!-- canvas for particles -->
+    <canvas id="backgroundCanvas"></canvas>
+    <!-- The hyperlink just runs logout.php -->
+    <a href="logout.php">logout</a>
+    <!-- This following form is for adding a new entry, because the action is empty it calls this page -->
+    <form id="contactForm" action="" method="post">
+      FirstName: <input type="text" name="FirstName" /><br />
+      LastName: <input type="text" name="LastName" /><br />
+      email: <input type="text" name="email" /><br />
+      phone number: <input type="text" name="phonenumber" /><br />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- The form below is the search bar form it uses the get method which means its variables are in $_GET -->
+    <form method="get">
+      <input type="text" name="search" /><button type="submit">Search</button>
+    </form>
+    <br />
+
+    <!-- script for background animation -->
+    <script src="particles.js"></script>
+
+    <script src="mainScripts.js"></script>
+  </body>
+</html>

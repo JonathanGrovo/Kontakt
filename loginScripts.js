@@ -19,21 +19,23 @@ function loginUser() {
     .then((response => response.json())) // converts server response into js object
     // where the JSON data returned by the server is handled logically
     .then((data) => {
-        console.log(data);
 
         if (data.success) {
             // redirect to main page on successful login
-            window.location.href = "main.php";
+            window.location.href = "mainPage.html";
         } else {
             // display error message returned by server
             const errorContainer = document.querySelector(".error-message");
             errorContainer.textContent = data.message;
 
-            errorContainer.classList.add('error-message-display');
+            // we only want these actions to occur if the class isn't already being applied
+            if (!errorContainer.classList.contains('error-message-display')) {
+                errorContainer.classList.add('error-message-display');
 
-            setTimeout(function () {
-                errorContainer.classList.remove('error-message-display');
-            }, 3000);
+                setTimeout(function () {
+                    errorContainer.classList.remove('error-message-display');
+                }, 3000);
+            }
         }
     })
     // catches errors made during fetch operation and console logs them

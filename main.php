@@ -84,7 +84,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $conn->close();
     ?>
 
-    <script src="script.js"></script>
+    <script src="mainScripts.js"></script>
 </body>
 
 </html>

@@ -61,7 +61,7 @@ function registerUser() {
 
         if (data.success) {
             // redirect to main page on successful login
-            window.location.href = "main.php";
+            window.location.href = "mainPage.html";
         } else {
 
             // to ensure the error message doesn't reset when button is clicked too fast
