@@ -1,16 +1,10 @@
 <?php
 // this page is specifically for handling backend login logic
-// create user session
-session_start();
-$server = 'localhost'; // since testing locally
-$user = 'testuser'; // username for user w privelages in my db
-$password = 'testpassword'; // password for above user
-$dbname = 'mytest'; // name of database
+include 'connection.php'; // ensures we are able to connect to the database before continuing
 
-$conn = new mysqli($server, $user, $password, $dbname); // creates a connection to the database
-
-if ($conn->connect_error) { // checks for successful connection
-    die("Database connection failed: " . $conn->connect_error);
+// starts user session if it has not already been started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 
 // gets the raw POST data
@@ -32,7 +26,9 @@ if ($results->num_rows == 1) { // checks the amount of rows returned and if it i
     $_SESSION['user'] = $row['user']; // this sets the session user to their user
     // success flag just determines whether or not the query was successful
     echo json_encode(["success" => true]);
+    exit();
 } else {
     // error message included in json response
     echo json_encode(["success" => false, "message" => "Invalid username or password"]);
+    exit();
 }

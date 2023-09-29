@@ -1,17 +1,9 @@
 <?php
 // this page is specifically for backend registration logic
-// create user session
-session_start();
-$server = 'localhost';
-$user = 'testuser';
-$password = 'testpassword';
-$dbname = 'mytest';
-
-$conn = new mysqli($server, $user, $password, $dbname);
-
-// if database connection fails
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
+include 'connection.php'; // ensure that we can connect to the database before we continue
+// starts user session if it has not already been started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
 }
 
 // gets the raw POST data
@@ -34,9 +26,9 @@ if ($results->num_rows == 0) { // if we find no users by that name
     $_SESSION["user"] = $newUser; // session is set to this new user
     // success flag just determines whether or not the query was successful
     echo json_encode(["success" => true]);
-    // exit();
+    exit(); // exit statements are good practice, they just ensure no other code is executed
 } else { // if there is at least 1 row, a user exists with the same username
     // error message included in json response
     echo json_encode(["success" => false, "message" => "Please choose a different username"]);
-    // exit();
+    exit();
 }

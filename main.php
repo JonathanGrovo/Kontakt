@@ -2,16 +2,7 @@
 // function for adding an entry into the table
 function addentry($firstname, $lastname, $email, $phonenumber)
 {
-    $server = 'localhost';
-    $user = 'testuser';
-    $password = 'testpassword';
-    $dbname = 'mytest';
     $person = $_SESSION['user']; // this pulls in the user session (the person signed in)
-
-    $conn = new mysqli($server, $user, $password, $dbname);
-    if ($conn->connect_error) {
-        die("Database connection failed: " . $conn->connect_error);
-    } // see login.php for information about the above lines
 
     // prob want to have some kind of response for when this user has already entered a contact with the same exact credentials
 
@@ -53,17 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </form>
     <br>
     <?php
-    $severname = "localhost";
-    $username = "testuser";
-    $password = "testpassword";
-    $dbname = "mytest";
     $person = $_SESSION['user'];
 
-    $conn = new mysqli($severname, $username, $password, $dbname);
-
-    if (mysqli_connect_error()) {
-        die("Database connection failed: " . mysqli_connect_error());
-    }
     //See login.php for the above code
     if (isset($_GET["search"]) and $_GET["search"] != "") { //checks to see if the search bar was used
         $search = $_GET["search"]; //pulls what the user searched

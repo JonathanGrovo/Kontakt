@@ -34,7 +34,7 @@
     <canvas id="backgroundCanvas"></canvas>
     <!-- The hyperlink just runs logout.php -->
     <a href="logout.php">logout</a>
-    <!-- This following form is for adding a new entry, because the action is empty it calls this page -->
+    <!-- This following form is for adding a new entry, because the action is empty it calls this page
     <form id="contactForm" action="" method="post">
       FirstName: <input type="text" name="FirstName" /><br />
       LastName: <input type="text" name="LastName" /><br />
@@ -43,11 +43,46 @@
       <input type="submit" value="Submit" />
     </form>
 
-    <!-- The form below is the search bar form it uses the get method which means its variables are in $_GET -->
+
+    The form below is the search bar form it uses the get method which means its variables are in $_GET
     <form method="get">
       <input type="text" name="search" /><button type="submit">Search</button>
     </form>
-    <br />
+    <br />  -->
+
+    <form onsubmit="event.preventDefault();">
+      <h1>create contact</h1>
+      <input
+        type="text"
+        id="firstname"
+        placeholder="First Name"
+        name="firstname"
+        required
+      />
+      <input
+        type="text"
+        id="lastname"
+        placeholder="Last Name"
+        name="lastname"
+        required
+      />
+      <input
+        type="text"
+        id="email"
+        placeholder="Email Address"
+        name="email"
+        required
+      />
+      <input
+        type="text"
+        id="phonenumber"
+        placeholder="Phone Number"
+        name="phonenumber"
+        required
+      />
+
+      <button type="submit">add contact</button>
+    </form>
 
     <!-- script for background animation -->
     <script src="particles.js"></script>
