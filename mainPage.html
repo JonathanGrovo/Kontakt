@@ -84,6 +84,46 @@
       <button type="submit">add contact</button>
     </form>
 
+    <form id="searchForm" method="get">
+      <input type="text" name="search" placeholder="Search contacts" />
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="contactList"></div>
+    <!-- 
+    <form onsubmit="event.preventDefault();">
+      <h1>edit contact</h1>
+      <input
+        type="text"
+        id="newFirstname"
+        placeholder="First Name"
+        name="newFirstname"
+        required
+      />
+      <input
+        type="text"
+        id="newLastname"
+        placeholder="Last Name"
+        name="newLastname"
+        required
+      />
+      <input
+        type="text"
+        id="newEmail"
+        placeholder="Email Address"
+        name="newEmail"
+        required
+      />
+      <input
+        type="text"
+        id="newPhonenumber"
+        placeholder="Phone Number"
+        name="newPhonenumber"
+        required
+      />
+      <button type="submit">edit contact</button>
+    </form> -->
+
     <!-- script for background animation -->
     <script src="particles.js"></script>
 
@@ -91,5 +131,11 @@
 
     <!-- script for creating contacts -->
     <script src="createContact.js"></script>
+
+    <!-- script for reading contacts -->
+    <script src="readContacts.js"></script>
+
+    <!-- script for deleting contacts -->
+    <script src="deleteContact.js"></script>
   </body>
 </html>

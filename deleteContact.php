@@ -39,7 +39,8 @@ if ($conn->affected_rows > 0) { // if the query affected at least one row
         echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
     } else {
         // Otherwise, the contact likely doesn't exist
-        echo json_encode(["success" => false, "message" => "Contact not found or no changes were made"]);
+        // echo json_encode(["success" => false, "message" => "Contact not found or no changes were mad" . $contact_id]);
+        echo json_encode(["success" => false, "message" => $contact_id]);
     }
     exit();
 }
