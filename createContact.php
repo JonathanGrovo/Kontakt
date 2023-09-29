@@ -1,10 +1,15 @@
 <?php
 include 'connection.php'; // ensures we are connected to database
 
+// starts user session if it has not already been started
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 // check if the user is logged in
 if (!isset($_SESSION['user'])) {
     // redirect user to homepage
-    header('Location: index.html');
+    header('Location: register.html');
     exit();
 }
 
@@ -32,7 +37,7 @@ $results = $conn->query($sql); // runs the query and stores it in variable
 
 if ($results->num_rows == 0) { // if we find no contacts that share exact credentials
     // query that inserts new contact into contact table
-    $sql = "INSERT INTO contacts (user, firstname, lastname, email, phonenumber, datecreated) VALUES ('$user','$firstname', '$lastname', '$email', '$phonenumber', NOW())";
+    $sql = "INSERT INTO contacts (user, firstname, lastname, email, phonenumber, datecreated) VALUES ('$currUser','$firstname', '$lastname', '$email', '$phonenumber', NOW())";
     $conn->query($sql); // runs the query
     // success flag just determines whether or not the query was successful
     echo json_encode(["success" => true]);
