@@ -59,28 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const searchVal = searchInput.value.trim();
         fetchContacts(searchVal);
-
-        console.log(searchVal);
-
-        fetchContacts(searchVal);
     });
-
-    //     if (searchInput !== null) {
-    //         const searchVal = searchInput.value.trim();
-    //         fetchContacts(searchVal);
-    //     } else {
-    //         fetchContacts('');
-    //     }
-    // });
-
-    // // add event listener to search form, triggering fetchContacts function
-    // const searchForm = document.getElementById('searchForm');
-    // searchForm.addEventListener('submit', function (event) {
-    //     event.preventDefault();
-    //     const searchInput = searchForm.querySelector('input[name="search"]');
-    //     const searchVal = searchInput.value.trim();
-    //     fetchContacts(searchVal);
-    // });
 
     // initial fetch to display all contacts when page loads
     fetchContacts('');
