@@ -1,39 +1,69 @@
-function updateContact(contact_id) {
-    // Get the modal element and the form
-    const modal = document.getElementById('editContactModal');
-    const editContactForm = document.getElementById('editContactForm');
-  
-    // Use the contactId to fetch contact details and populate the form fields
-    // Here, you can use AJAX to fetch contact details based on the contactId and populate the form fields.
 
+// get modal element and form element
+const modal = document.getElementById('editContactModal');
+const editContactForm = document.getElementById('editContactForm');
 
-  
-    // Display the modal
-    // modal.style.display = 'block';
-  
-    // Add an event listener to close the modal when the user clicks the close button
-    const closeButton = modal.querySelector('.close');
-    closeButton.addEventListener('click', function () {
-      modal.style.display = 'none';
+let identifier;
+
+function getContact(contact_id) {
+  identifier = contact_id;
+  console.log(identifier);
+  document.getElementById('contact_id').value = contact_id;
+}
+
+// when the submit button is pressed for updating a contact
+editContactForm.addEventListener('submit', function (event) {
+  // prevent default form submission behaviour
+  event.preventDefault();
+  console.log('hello');
+
+  // get values from the form
+  const newFirstname = document.getElementById('newFirstname').value;
+  const newLastname = document.getElementById('newLastname').value;
+  const newEmail = document.getElementById('newEmail').value;
+  const newPhonenumber = document.getElementById('newPhonenumber').value;
+  const contact_id = document.getElementById('contact_id').value;
+
+  console.log(contact_id);
+
+  // send data to server
+  fetch('updateContact.php', {
+    method: 'POST',
+    body: JSON.stringify({
+      contact_id: contact_id,
+      newFirstname: newFirstname,
+      newLastname: newLastname,
+      newEmail: newEmail,
+      newPhonenumber: newPhonenumber,
+    }),
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      if (data.success) {
+        // Update the contact list or take other necessary actions
+        // Close the modal
+        hideEditModal();
+      } else {
+        console.error(data.message);
+        // Handle the error appropriately
+      }
+    })
+    .catch((error) => {
+      console.error('Error:', error);
+      // Handle the error appropriately
     });
-  
-    // Handle form submission (saving changes) using AJAX
-    editContactForm.addEventListener('submit', function (event) {
-      event.preventDefault();
-      
-      // Use AJAX to submit the form data (updated contact information) to your PHP script
-      // Include the contactId as well to identify the contact being edited.
-      
-      // After successfully updating the contact, you can close the modal and refresh the contact list if needed.
-      // You may also want to add error handling.
-    });
-  }
+
+  });
 
   // Function to show the edit contact modal
 function showEditModal() {
     const modal = document.getElementById('editContactModal');
     console.log('help');
     modal.style.display = 'block';
+    console.log('gamer');
   }
   
   // Function to hide the edit contact modal

@@ -93,42 +93,42 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Edit Contact</h2>
-        <form id="editContactForm">
+        <form id="editContactForm" onsubmit="event.preventDefault();">
           <!-- input fields for editing contact information -->
           <!-- field for editing first name -->
           <input
             type="text"
-            id="editFirstname"
+            id="newFirstname"
             placeholder="First Name"
-            name="editFirstname"
+            name="newFirstname"
             required
           />
           <!-- field for editing last name -->
           <input
             type="text"
-            id="editLastname"
+            id="newLastname"
             placeholder="Last Name"
-            name="editLastname"
+            name="newLastname"
             required
           />
           <!-- field for editing email address -->
           <input
             type="text"
-            id="editEmail"
+            id="newEmail"
             placeholder="Email Address"
-            name="editEmail"
+            name="newEmail"
             required
           />
           <!-- field for editing phone number -->
           <input
             type="text"
-            id="editPhonenumber"
+            id="newPhonenumber"
             placeholder="Phone Number"
-            name="editPhonenumber"
+            name="newPhonenumber"
             required
           />
           <!-- hidden field to store the contact_id, helps with identifying user on backend -->
-          <input type="hidden" id="editContactId" name="editContactId" />
+          <input type="hidden" id="contact_id" name="contact_id" />
           <button type="submit">Save Changes</button>
         </form>
       </div>
