@@ -15,7 +15,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 // call function to display contacts in html
                 displayContacts(data.contacts);
             } else {
-                console.error('something went wrong');
+                console.error(data);
+
+                // displays as empty
+                const contactList = document.getElementById('contactList');
+                contactList.innerHTML = '';
             }
         })
         .catch((error) => {
@@ -37,6 +41,8 @@ document.addEventListener('DOMContentLoaded', function () {
             `<p>name: ${contact.firstname} ${contact.lastname}</p>
             <p>email and phone: ${contact.email} ${contact.phonenumber}</p>
             <p>contact id: ${contact.contact_id}</p>
+            <button onclick="updateContact('${contact.contact_id}')">Update</button>
+            <button class="edit-button">Edit</button>
             <button onclick="deleteContact('${contact.contact_id}')">Delete</button>`
 
             // append contactElement to contactList
@@ -44,14 +50,37 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // add event listener to search form, triggering fetchContacts function
-    const searchForm = document.getElementById('searchForm');
-    searchForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const searchInput = searchForm.querySelector('input[name="search"]');
+    // get search input element
+    const searchInput = document.getElementById('searchInput');
+
+    
+    // input event listener, triggers on input change in field
+    searchInput.addEventListener('input', function () {
+
         const searchVal = searchInput.value.trim();
         fetchContacts(searchVal);
+
+        console.log(searchVal);
+
+        fetchContacts(searchVal);
     });
+
+    //     if (searchInput !== null) {
+    //         const searchVal = searchInput.value.trim();
+    //         fetchContacts(searchVal);
+    //     } else {
+    //         fetchContacts('');
+    //     }
+    // });
+
+    // // add event listener to search form, triggering fetchContacts function
+    // const searchForm = document.getElementById('searchForm');
+    // searchForm.addEventListener('submit', function (event) {
+    //     event.preventDefault();
+    //     const searchInput = searchForm.querySelector('input[name="search"]');
+    //     const searchVal = searchInput.value.trim();
+    //     fetchContacts(searchVal);
+    // });
 
     // initial fetch to display all contacts when page loads
     fetchContacts('');

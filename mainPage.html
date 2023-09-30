@@ -10,6 +10,7 @@
     <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
     <!-- sheets used for styling the page -->
     <link rel="stylesheet" href="login.css" />
+    <link rel="stylesheet" href="modal.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
@@ -34,24 +35,11 @@
     <canvas id="backgroundCanvas"></canvas>
     <!-- The hyperlink just runs logout.php -->
     <a href="logout.php">logout</a>
-    <!-- This following form is for adding a new entry, because the action is empty it calls this page
-    <form id="contactForm" action="" method="post">
-      FirstName: <input type="text" name="FirstName" /><br />
-      LastName: <input type="text" name="LastName" /><br />
-      email: <input type="text" name="email" /><br />
-      phone number: <input type="text" name="phonenumber" /><br />
-      <input type="submit" value="Submit" />
-    </form>
 
-
-    The form below is the search bar form it uses the get method which means its variables are in $_GET
-    <form method="get">
-      <input type="text" name="search" /><button type="submit">Search</button>
-    </form>
-    <br />  -->
-
+    <!-- prevents default form submission event -->
     <form onsubmit="event.preventDefault();">
       <h1>create contact</h1>
+      <!-- field for adding the new contact first name -->
       <input
         type="text"
         id="firstname"
@@ -59,6 +47,7 @@
         name="firstname"
         required
       />
+      <!-- field for adding the new contact last name -->
       <input
         type="text"
         id="lastname"
@@ -66,6 +55,7 @@
         name="lastname"
         required
       />
+      <!-- field for adding the new contact email -->
       <input
         type="text"
         id="email"
@@ -73,6 +63,7 @@
         name="email"
         required
       />
+      <!-- field for adding the new contact phone number -->
       <input
         type="text"
         id="phonenumber"
@@ -84,56 +75,76 @@
       <button type="submit">add contact</button>
     </form>
 
+    <!-- allows user to search for a certain contact -->
     <form id="searchForm" method="get">
-      <input type="text" name="search" placeholder="Search contacts" />
-      <button type="submit">Search</button>
+      <input
+        type="text"
+        id="searchInput"
+        name="search"
+        placeholder="Search contacts"
+      />
     </form>
 
+    <!-- holds all the readable contacts -->
     <div id="contactList"></div>
-    <!-- 
-    <form onsubmit="event.preventDefault();">
-      <h1>edit contact</h1>
-      <input
-        type="text"
-        id="newFirstname"
-        placeholder="First Name"
-        name="newFirstname"
-        required
-      />
-      <input
-        type="text"
-        id="newLastname"
-        placeholder="Last Name"
-        name="newLastname"
-        required
-      />
-      <input
-        type="text"
-        id="newEmail"
-        placeholder="Email Address"
-        name="newEmail"
-        required
-      />
-      <input
-        type="text"
-        id="newPhonenumber"
-        placeholder="Phone Number"
-        name="newPhonenumber"
-        required
-      />
-      <button type="submit">edit contact</button>
-    </form> -->
+
+    <!-- user wants to edit contact -->
+    <div id="editContactModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Edit Contact</h2>
+        <form id="editContactForm">
+          <!-- input fields for editing contact information -->
+          <!-- field for editing first name -->
+          <input
+            type="text"
+            id="editFirstname"
+            placeholder="First Name"
+            name="editFirstname"
+            required
+          />
+          <!-- field for editing last name -->
+          <input
+            type="text"
+            id="editLastname"
+            placeholder="Last Name"
+            name="editLastname"
+            required
+          />
+          <!-- field for editing email address -->
+          <input
+            type="text"
+            id="editEmail"
+            placeholder="Email Address"
+            name="editEmail"
+            required
+          />
+          <!-- field for editing phone number -->
+          <input
+            type="text"
+            id="editPhonenumber"
+            placeholder="Phone Number"
+            name="editPhonenumber"
+            required
+          />
+          <!-- hidden field to store the contact_id, helps with identifying user on backend -->
+          <input type="hidden" id="editContactId" name="editContactId" />
+          <button type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
 
     <!-- script for background animation -->
     <script src="particles.js"></script>
-
-    <!-- <script src="mainScripts.js"></script> -->
 
     <!-- script for creating contacts -->
     <script src="createContact.js"></script>
 
     <!-- script for reading contacts -->
     <script src="readContacts.js"></script>
+
+    <!-- script for updating contacts -->
+    <script src="updateContact.js"></script>
 
     <!-- script for deleting contacts -->
     <script src="deleteContact.js"></script>

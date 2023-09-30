@@ -10,6 +10,8 @@ if (session_status() == PHP_SESSION_NONE) {
 if (!isset($_SESSION['user'])) {
     // redirect user to homepage
     header('Location: index.html');
+
+    // THIS IS NOT WORKING WHEN USER IS NOT LOGGED IN, NEED TO FIX THIS FOR ALL SESSIONS
     exit();
 }
 
