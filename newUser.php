@@ -14,17 +14,18 @@ $data = file_get_contents('php://input');
 $jsonData = json_decode($data, true); // true as second parameter returns an associative array
 
 // access the new username and password
-$newUser = $jsonData['NewUser'];
+$username = $jsonData['username'];
+
 $pass = $jsonData['password'];
 
-$sql = "SELECT * FROM users WHERE user='$newUser'"; // query that checks if there are users existing with same name
+$sql = "SELECT * FROM users WHERE user='$username'"; // query that checks if there are users existing with same name
 
 $results = $conn->query($sql); // runs the query and stores it in variable
 
 if ($results->num_rows == 0) { // if we find no users by that name
-    $sql = "INSERT INTO users VALUES ('$newUser','$pass')"; // query that inserts new user info into users table
+    $sql = "INSERT INTO users VALUES ('$username','$pass')"; // query that inserts new user info into users table
     $conn->query($sql); // runs the query
-    $_SESSION["user"] = $newUser; // session is set to this new user
+    $_SESSION["user"] = $username; // session is set to this new user
     // success flag just determines whether or not the query was successful
     echo json_encode(["success" => true]);
     exit(); // exit statements are good practice, they just ensure no other code is executed

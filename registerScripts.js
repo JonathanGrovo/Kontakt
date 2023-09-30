@@ -42,7 +42,6 @@ function registerUser() {
     const username = document.querySelector("#usernameField").value;
     const password = document.querySelector("#passwordField").value;
 
-
     // fetch is an API that is used to make an asynchronous HTTP POST request
     // from the register.php page
     fetch("newUser.php", {
