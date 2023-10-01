@@ -91,45 +91,61 @@
     <!-- user wants to edit contact -->
     <div id="editContactModal" class="modal">
       <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Edit Contact</h2>
+        <span class="close close-styling"
+          ><i class="fa-solid fa-xmark close"></i
+        ></span>
+        <h1>Edit Contact</h1>
+        <!-- where error messages are displayed -->
+        <div class="error-message"></div>
         <form id="editContactForm" onsubmit="event.preventDefault();">
           <!-- input fields for editing contact information -->
           <!-- field for editing first name -->
-          <input
-            type="text"
-            id="newFirstname"
-            placeholder="First Name"
-            name="newFirstname"
-            required
-          />
+          <div class="modal-input">
+            <input
+              type="text"
+              id="newFirstname"
+              placeholder="First Name"
+              name="newFirstname"
+              required
+            />
+            <i class="bx bxs-user"></i>
+          </div>
           <!-- field for editing last name -->
-          <input
-            type="text"
-            id="newLastname"
-            placeholder="Last Name"
-            name="newLastname"
-            required
-          />
+          <div class="modal-input">
+            <input
+              type="text"
+              id="newLastname"
+              placeholder="Last Name"
+              name="newLastname"
+              required
+            />
+            <i class="fa-solid fa-users"></i>
+          </div>
           <!-- field for editing email address -->
-          <input
-            type="text"
-            id="newEmail"
-            placeholder="Email Address"
-            name="newEmail"
-            required
-          />
+          <div class="modal-input">
+            <input
+              type="text"
+              id="newEmail"
+              placeholder="Email Address"
+              name="newEmail"
+              required
+            />
+            <i class="fa-solid fa-envelope"></i>
+          </div>
           <!-- field for editing phone number -->
-          <input
-            type="text"
-            id="newPhonenumber"
-            placeholder="Phone Number"
-            name="newPhonenumber"
-            required
-          />
+          <div class="modal-input">
+            <input
+              type="text"
+              id="newPhonenumber"
+              placeholder="Phone Number"
+              name="newPhonenumber"
+              required
+            />
+            <i class="fa-solid fa-phone"></i>
+          </div>
           <!-- hidden field to store the contact_id, helps with identifying user on backend -->
           <input type="hidden" id="contact_id" name="contact_id" />
-          <button type="submit">Save Changes</button>
+          <button type="submit" class="btn save-btn">Save Changes</button>
         </form>
       </div>
     </div>

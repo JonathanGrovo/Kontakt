@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
             contactElement.innerHTML =
             `<p>name: ${contact.firstname} ${contact.lastname}</p>
             <p>email and phone: ${contact.email} ${contact.phonenumber}</p>
-            <button onclick="getContact('${contact.contact_id}');" class="edit-button";>Edit</button>
+            <button onclick="getCredentials('${contact.firstname}', '${contact.lastname}', '${contact.email}', '${contact.phonenumber}', '${contact.contact_id}');" class="edit-button";>Edit</button>
             <button onclick="deleteContact('${contact.contact_id}')">Delete</button>`
 
             // append contactElement to contactList

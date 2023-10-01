@@ -37,68 +37,7 @@
     }
 }
 
-/* setting base style properties */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-
-#backgroundCanvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-
-body {
-    display: flex;
-    background: #36393e;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: center;
-}
-
-.container {
-    position: relative;
-    display: flex;
-    flex-direction: column; /* arrange children vertically */
-    align-items: center; /* center items horizontally */
-    justify-content: center; /*center items vertically */
-    min-height: 100vh;
-}
-
-.login-title {
-    position: relative;
-}
-
-.login-title h2 {
-    color: #fff;
-    /* font-size: 40px; */
-    font-size: 4.35em;
-} 
-
-@media (max-width: 768px) {
-    .login-title h2 {
-        font-size: 9vw;
-    }
-}
-
-.login-title h2:nth-child(1) {
-    position: absolute;
-    color: transparent;
-    -webkit-text-stroke: 2px rgba( 114, 137, 218, 1);
-  }
-
-  .login-title h2:nth-child(2) {
-    position: relative;
-    color: rgba( 114, 137, 218, 1);
-    animation: water 4s ease-in-out infinite;
-  }
-
-
-/* stolen from some youtube video */
+/* animates water sloshing effect in login and registration */
 @keyframes water {
     0%,
     100% {
@@ -129,6 +68,71 @@ body {
     }
   }
 
+/* setting base style properties */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* for particle display */
+#backgroundCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+body {
+    display: flex;
+    background: #36393e;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+/* container styling */
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* arrange children vertically */
+    align-items: center; /* center items horizontally */
+    justify-content: center; /*center items vertically */
+    min-height: 100vh;
+}
+
+/* styling base properties of the login/registration title */
+.login-title {
+    position: relative;
+}
+
+.login-title h2 {
+    color: #fff;
+    font-size: 4.35em;
+} 
+
+/* shrinks title if window is too small */
+@media (max-width: 768px) {
+    .login-title h2 {
+        font-size: 9vw;
+    }
+}
+
+/* allow for water sloshing effect */
+.login-title h2:nth-child(1) {
+    position: absolute;
+    color: transparent;
+    -webkit-text-stroke: 2px rgba( 114, 137, 218, 1);
+  }
+
+  .login-title h2:nth-child(2) {
+    position: relative;
+    color: rgba( 114, 137, 218, 1);
+    animation: water 4s ease-in-out infinite;
+  }
+
+/* wrapper styling */
 .wrapper {
     width: 420px;
     background: transparent;
@@ -142,6 +146,7 @@ body {
     margin-bottom: 35px;
 }
 
+/* allow elements to be faded in on page load */
 .fadeable {
     opacity: 0;
 }
@@ -151,11 +156,13 @@ body {
     animation: fadeIn 0.5s ease-in-out forwards; /* defining the transition */
 }
 
+/* box heading styling */
 .wrapper h1 {
     font-size: 36px;
     text-align: center;
 }
 
+/* styling error messages */
 .error-message {
     display: flex;
     justify-content: center;
@@ -174,6 +181,7 @@ body {
     animation: errorFade 3s linear;
 }
 
+/* styling the input fields */
 .wrapper .input-box {
     position: relative;
     width: 100%;
@@ -181,10 +189,12 @@ body {
     margin: 30px 0;
 }
 
+/* specific to the username input */
 #input-box-username {
     margin: 15px 0 30px 0;
 }
 
+/* styling the input fields */
 .input-box input {
     width: 100%;
     height: 100%;
@@ -198,10 +208,12 @@ body {
     padding: 20px 45px 20px 20px;
 }
 
+/* color for plcaeholder text */
 .input-box input::placeholder {
     color: #ffffffc4;
 }
 
+/* icon styling */
 .input-box i {
     position: absolute;
     top: 50%;
@@ -219,6 +231,7 @@ body {
     animation: spin 3s ease infinite;
 }
 
+/* eye icon styling */
 .input-box .fa-eye {
     cursor: pointer;
     position: absolute;
@@ -262,7 +275,8 @@ body {
     animation: spin 3s ease infinite;
 }
 
-.wrapper .btn {
+/* styling the button */
+/* .wrapper .btn {
     width: 100%;
     height: 45px;
     background: #fff;
@@ -275,10 +289,10 @@ body {
     color: #333;
     font-weight: 600;
     margin-top: 40px;
-}
+} */
 
 /* when register/login button hovered */
-.wrapper .btn:hover {
+/* .wrapper .btn:hover {
     background-color: rgba( 114, 137, 218, 1);
     border-style: none;
     color: #fff;
@@ -289,6 +303,45 @@ body {
 }
 
 .wrapper .btn:active {
+    background-color: rgb(144, 189, 241);
+    box-shadow: 0 0 5px rgb(144, 189, 241),
+                0 0 5px rgb(144, 189, 241),
+                0 0 10px rgb(144, 189, 241),
+                0 0 10px rgb(144, 189, 241);
+} */
+
+
+/* styling the button */
+.btn {
+    width: 100%;
+    height: 45px;
+    background: #fff;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-top: 40px;
+    /* button transition animations */
+    transition: background-color 0.2s ease-in-out, color 0.1s ease-in-out, box-shadow 0.3s ease-in-out;
+    /* transition: color 1s ease-in-out; */
+}
+
+/* when register/login button hovered */
+.btn:hover {
+    background-color: rgba( 114, 137, 218, 1);
+    border-style: none;
+    color: #fff;
+    box-shadow: 0 0 5px rgba( 114, 137, 218, 1),
+                0 0 5px rgba( 114, 137, 218, 1),
+                0 0 10px rgba( 114, 137, 218, 1),
+                0 0 10px rgba( 114, 137, 218, 1);
+}
+
+.btn:active {
     background-color: rgb(144, 189, 241);
     box-shadow: 0 0 5px rgb(144, 189, 241),
                 0 0 5px rgb(144, 189, 241),

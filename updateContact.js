@@ -3,11 +3,12 @@
 const modal = document.getElementById('editContactModal');
 const editContactForm = document.getElementById('editContactForm');
 
-let identifier;
-
-function getContact(contact_id) {
-  identifier = contact_id;
-  console.log(identifier);
+// gets all existing contact credentials and puts them in the input fields
+function getCredentials(firstname, lastname, email, phonenumber, contact_id) {
+  document.getElementById('newFirstname').value = firstname;
+  document.getElementById('newLastname').value = lastname;
+  document.getElementById('newEmail').value = email;
+  document.getElementById('newPhonenumber').value = phonenumber;
   document.getElementById('contact_id').value = contact_id;
 }
 
@@ -15,7 +16,6 @@ function getContact(contact_id) {
 editContactForm.addEventListener('submit', function (event) {
   // prevent default form submission behaviour
   event.preventDefault();
-  console.log('hello');
 
   // get values from the form
   const newFirstname = document.getElementById('newFirstname').value;
@@ -23,8 +23,6 @@ editContactForm.addEventListener('submit', function (event) {
   const newEmail = document.getElementById('newEmail').value;
   const newPhonenumber = document.getElementById('newPhonenumber').value;
   const contact_id = document.getElementById('contact_id').value;
-
-  console.log(contact_id);
 
   // send data to server
   fetch('updateContact.php', {
@@ -61,9 +59,7 @@ editContactForm.addEventListener('submit', function (event) {
   // Function to show the edit contact modal
 function showEditModal() {
     const modal = document.getElementById('editContactModal');
-    console.log('help');
     modal.style.display = 'block';
-    console.log('gamer');
   }
   
   // Function to hide the edit contact modal

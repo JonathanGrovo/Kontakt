@@ -1,31 +1,137 @@
 /* Style for the modal overlay */
 .modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  }
-  
-  /* Style for the modal content */
-  .modal-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  }
-  
-  /* Style for the close button */
-  .close {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-  }
-  
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+}
+
+/* Style for the modal content */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color:#36393e;
+  border: 2px solid rgba(255, 255, 255, .2);
+
+  width: 420px;
+  border-radius: 10px;
+  padding: 30px 40px;
+  color: #fff;
+
+  /* padding: 20px;
+  border-radius: 5px; */
+  /* box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5); */
+}
+
+.modal h1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+.input-box-top {
+  margin: 15px 0 30px 0;
+}
+ 
+.modal .modal-input {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  margin:30px 0;
+}
+
+/* defining input field styling */
+.modal-input input {
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  border-radius: 40px;
+  font-size: 16px;
+  color: #fff;
+  padding: 20px 45px 20px 20px;
+}
+
+/* color for placeholder text */
+.modal-input input::placeholder {
+  color: #ffffffc4;
+}
+
+/* input element focused */
+input:focus {
+  border-color: rgba( 114, 137, 218, 1);
+}
+
+/* input element hovered */
+input:hover {
+  background-color: rgba( 114, 137, 218, 0.2);
+}
+
+/* Style for the close button */
+.close-styling {
+  position: absolute;
+  font-size: 20px;
+  top: 0px;
+  right: 0px;
+  padding: 8px 16px;
+  border-top-right-radius: 8px;
+  border-bottom-left-radius: 0px;
+  cursor: pointer;
+  /* color: #fff; */
+  background-color: transparent;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* x styling on hover */
+.close-styling:hover {
+  background-color: rgb(255, 35, 35);
+}
+
+/* add margin to bottom of the button */
+.save-btn {
+  margin-bottom: 25px;
+}
+
+/* save button hover styling */
+.save-btn:hover {
+  background-color: rgb(94, 206, 99);
+  border-style: none;
+  color: #fff;
+  box-shadow: 0 0 5px rgba(94, 206, 99, 1),
+              0 0 5px rgba(94, 206, 99, 1),
+              0 0 10px rgba(94, 206, 99, 1),
+              0 0 10px rgba(94, 206, 99, 1);
+}
+
+/* icon in input field styling */
+.modal-input i {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  right: 20px;
+}
+
+/* styling specific to users icon */
+.modal-input .fa-users {
+  font-size: 18px;
+  right: 19px;
+}
+
+/* styling specific to envelope icon */
+.modal-input .fa-envelope {
+  font-size: 18px;
+  right: 21px;
+}
+
+/* styling specific to phone icon */
+.modal-input .fa-phone {
+  font-size: 18px;
+  right: 21px;
+}

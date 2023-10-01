@@ -64,9 +64,7 @@ function registerUser() {
         } else {
 
             // to ensure the error message doesn't reset when button is clicked too fast
-            if (errorContainer.classList.contains('error-message-display')) {
-                return;
-            } else {
+            if (!errorContainer.classList.contains('error-message-display')) {
                 errorContainer.textContent = "";
                 // display error message returned by server
                 errorContainer.textContent = data.message;
