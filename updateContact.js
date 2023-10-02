@@ -197,29 +197,23 @@ function showEditModal() {
     const modalContent = document.querySelector('.modal-content');
 
     setTimeout(function () {
-      modalContent.classList.add('show');}, 10);
+      modalContent.classList.add('show'); modal.classList.add('show');}, 10);
 }
   
 // Function to hide the edit contact modal
 function hideEditModal() {
   const modal = document.getElementById('editContactModal');
-  // modal.style.display = 'none';
 
   // remove the show class from the modal-content div
   const modalContent = document.querySelector('.modal-content');
-  // modalContent.classList.remove('show');
 
-  // // transitioned event listener to remove modal content
-  // modalContent.addEventListener('transitioned', function() {
-  //   modal.style.display = 'none'; }, {once: true });
-  // modalContent.classList.remove('show');
+  // transitioned event listener to remove modal content
   modalContent.classList.add('hide');
+  modal.classList.add('hide');
   setTimeout(function () {
-    modal.style.display = 'none'; modalContent.classList.remove('show'); modalContent.classList.remove('hide');}, 500);
-
-  // modalContent.classList.remove('show');
-  // modalContent.classList.remove('show');
-  // modalContent.classList.remove('hide');
+    modal.style.display = 'none'; modalContent.classList.remove('show'); 
+    modalContent.classList.remove('hide'); modal.classList.remove('show'); 
+    modal.classList.remove('hide')}, 200);
 }
   
 // event delegation handles clicks on dynamically generated elements

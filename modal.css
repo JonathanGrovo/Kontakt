@@ -6,8 +6,23 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  background-color: rgba(0, 0, 0, 0); /* Semi-transparent background */
   overflow: auto; /* enable scrolling when modal content exceeds viewport */
+
+  /* background color transition */
+  transition: background-color 0.5s ease;
+}
+
+/* when the modal is shown fade in bg */
+.modal.show {
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.5s ease;
+}
+
+/* when the modal is hidden */
+.modal.hide {
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s ease;
 }
 
 /* Style for the modal content */
@@ -27,14 +42,13 @@
 
   /* helps with transition styling */
   opacity: 0;
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.4s ease, opacity 0.2s ease;
 }
 
 /* when the modal is shown */
 .modal-content.show {
   transform: translate(-50%, -50%) scale(1);
-
-  transition: transform 0.5s ease, opacity 0.5s ease;
+  transition: transform 0.4s ease, opacity 0.2s ease;
   opacity: 1;
 }
 
@@ -44,16 +58,13 @@
   opacity: 0;
 }
 
-
+/* modal heading */
 .modal h1 {
   font-size: 36px;
   text-align: center;
 }
-
-.input-box-top {
-  margin: 15px 0 30px 0;
-}
  
+/* input fields in modal */
 .modal .modal-input {
   position: relative;
   width: 100%;
@@ -125,8 +136,6 @@ input:hover {
               0 0 10px rgba(94, 206, 99, 1),
               0 0 10px rgba(94, 206, 99, 1);
 }
-
-/* .save-btn .disabled */
 
 /* icon in input field styling */
 .modal-input i {
