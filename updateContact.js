@@ -1,6 +1,7 @@
-// get modal element and form element
-const modal = document.getElementById('editContactModal');
-const editContactForm = document.getElementById('editContactForm');
+// get modal element and form element, as well as the modal content element
+const editModal = document.getElementById('editModal');
+const editForm = document.getElementById('editForm');
+const editModalContent = document.getElementById('editModalContent');
 
 // initial field values
 let initFirstname;
@@ -64,11 +65,8 @@ function hasChanges() {
   return Object.values(changesMade).some((value) => value === true);
 }
 
-// flag to ensure we don't perform a fetch on nonvalid input
-let validInput = true;
-
 // when the submit button is pressed for updating a contact
-editContactForm.addEventListener('submit', function (event) {
+editForm.addEventListener('submit', function (event) {
   // prevent default form submission behaviour
   event.preventDefault();
 
@@ -79,78 +77,8 @@ editContactForm.addEventListener('submit', function (event) {
   const newPhonenumber = document.getElementById('newPhonenumber').value;
   const contact_id = document.getElementById('contact_id').value;
 
-  // regular expressions used to ensure user is entering valid credentials
-  const nameRegex = /^[A-Za-z\s]+$/;
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const phoneRegex = /^(\d{10}|\d{3}-\d{3}-\d{4})$/;
-
-  // want to assume the input is initially valid
-  validInput = true;
-
-  // if the user enters a nonvalid firstname
-  if (!nameRegex.test(newFirstname)) {
-    // display related error message
-    const errorContainer = document.querySelector(".error-message");
-    errorContainer.textContent = "Not a valid first name";
-
-    // ensure we aren't displaying it too fast
-    if (!errorContainer.classList.contains('error-message-display')) {
-      errorContainer.classList.add('error-message-display');
-
-      setTimeout(function () {
-        errorContainer.classList.remove('error-message-display');
-      }, 3000);
-    }
-    validInput = false;
-
-  } else if (!nameRegex.test(newLastname)) { // if nonvalid last name
-    // display related error message
-    const errorContainer = document.querySelector(".error-message");
-    errorContainer.textContent = "Not a valid last name";
-
-    // ensure we aren't displaying it too fast
-    if (!errorContainer.classList.contains('error-message-display')) {
-      errorContainer.classList.add('error-message-display');
-
-      setTimeout(function () {
-        errorContainer.classList.remove('error-message-display');
-      }, 3000);
-    }
-    validInput = false;
-
-  } else if (!emailRegex.test(newEmail)) { // if nonvalid email
-      // display related error message
-      const errorContainer = document.querySelector(".error-message");
-      errorContainer.textContent = "Not a valid email address";
-  
-      // ensure we aren't displaying it too fast
-      if (!errorContainer.classList.contains('error-message-display')) {
-        errorContainer.classList.add('error-message-display');
-  
-        setTimeout(function () {
-          errorContainer.classList.remove('error-message-display');
-        }, 3000);
-      }
-      validInput = false;
-
-  } else if (!phoneRegex.test(newPhonenumber)) { // if nonvalid phone number
-      // display related error message
-      const errorContainer = document.querySelector(".error-message");
-      errorContainer.textContent = "Not a valid phone number";
-
-      // ensure we aren't displaying it too fast
-      if (!errorContainer.classList.contains('error-message-display')) {
-        errorContainer.classList.add('error-message-display');
-
-        setTimeout(function () {
-          errorContainer.classList.remove('error-message-display');
-        }, 3000);
-      }
-      validInput = false;
-  }
-
   // send data to server if we have valid input
-  if (validInput) {
+  if (validEntries(newFirstname, newLastname, newEmail, newPhonenumber)) {
     fetch('updateContact.php', {
       method: 'POST',
       body: JSON.stringify({
@@ -168,8 +96,11 @@ editContactForm.addEventListener('submit', function (event) {
       .then((data) => {
         if (data.success) {
           // Update the contact list or take other necessary actions
+          // WANT TO DISPLAY SOME SUCCESS MESSAGER
           // Close the modal
           hideEditModal();
+          // update the list of contacts on the main page
+          updateContacts();
         } else {
           console.error(data.message);
           // Handle the error appropriately
@@ -184,8 +115,7 @@ editContactForm.addEventListener('submit', function (event) {
 
   // Function to show the edit contact modal
 function showEditModal() {
-    const modal = document.getElementById('editContactModal');
-    modal.style.display = 'block';
+    editModal.style.display = 'block';
     // reset flags on modal open
     for (const field in changesMade) {
       changesMade[field] = false; // reset each flag to false
@@ -194,26 +124,21 @@ function showEditModal() {
     submitButton.setAttribute('disabled', true);
 
     // fancy transition in
-    const modalContent = document.querySelector('.modal-content');
-
     setTimeout(function () {
-      modalContent.classList.add('show'); modal.classList.add('show');}, 10);
+      editModalContent.classList.add('show'); editModal.classList.add('show');}, 10);
 }
   
 // Function to hide the edit contact modal
 function hideEditModal() {
-  const modal = document.getElementById('editContactModal');
-
-  // remove the show class from the modal-content div
-  const modalContent = document.querySelector('.modal-content');
-
   // transitioned event listener to remove modal content
-  modalContent.classList.add('hide');
-  modal.classList.add('hide');
+  editModalContent.classList.add('hide');
+  editModal.classList.add('hide');
+
+  // wait to remove the styles
   setTimeout(function () {
-    modal.style.display = 'none'; modalContent.classList.remove('show'); 
-    modalContent.classList.remove('hide'); modal.classList.remove('show'); 
-    modal.classList.remove('hide')}, 200);
+    editModal.style.display = 'none'; editModalContent.classList.remove('show'); 
+    editModalContent.classList.remove('hide'); editModal.classList.remove('show'); 
+    editModal.classList.remove('hide')}, 200);
 }
   
 // event delegation handles clicks on dynamically generated elements

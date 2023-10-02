@@ -88,16 +88,16 @@
     <!-- holds all the readable contacts -->
     <div id="contactList"></div>
 
-    <!-- user wants to edit contact -->
-    <div id="editContactModal" class="modal">
-      <div class="modal-content">
+    <!-- user wants to edit contact (modal) -->
+    <div id="editModal" class="modal">
+      <div id="editModalContent" class="modal-content">
         <span class="close close-styling"
           ><i class="fa-solid fa-xmark close"></i
         ></span>
         <h1>Edit Contact</h1>
         <!-- where error messages are displayed -->
         <div class="error-message"></div>
-        <form id="editContactForm" onsubmit="event.preventDefault();">
+        <form id="editForm" onsubmit="event.preventDefault();">
           <!-- input fields for editing contact information -->
           <!-- field for editing first name -->
           <div class="modal-input">
@@ -164,5 +164,8 @@
 
     <!-- script for deleting contacts -->
     <script src="deleteContact.js"></script>
+
+    <!-- script for checking if entries are valid -->
+    <script src="regexCheck.js"></script>
   </body>
 </html>
