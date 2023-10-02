@@ -149,11 +149,14 @@ body {
 /* allow elements to be faded in on page load */
 .fadeable {
     opacity: 0;
+    /* transition: opacity 1s ease-in-out forwards; */
 }
 
 .fade-in {
-    opacity: 0; /* initial opacity */
-    animation: fadeIn 0.5s ease-in-out forwards; /* defining the transition */
+    /* opacity: 0; initial opacity */
+    animation: fadeIn 0.5s ease-in-out forwards;
+    /* transition: opacity 1s ease-in-out forwards; */
+    opacity: 1;
 }
 
 /* box heading styling */

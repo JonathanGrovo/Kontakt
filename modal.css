@@ -15,7 +15,7 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(0);
   background-color:#36393e;
   border: 2px solid rgba(255, 255, 255, .2);
   max-height: 80%;
@@ -24,7 +24,26 @@
   border-radius: 10px;
   padding: 30px 40px;
   color: #fff;
+
+  /* helps with transition styling */
+  opacity: 0;
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
+
+/* when the modal is shown */
+.modal-content.show {
+  transform: translate(-50%, -50%) scale(1);
+
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  opacity: 1;
+}
+
+/* after the modal is shown, when its hidden */
+.modal-content.show.hide {
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+}
+
 
 .modal h1 {
   font-size: 36px;
@@ -136,6 +155,7 @@ input:hover {
   right: 21px;
 }
 
+/* when the button is disabled */
 .save-btn:disabled {
   background-color: rgba(32, 32, 32, 0.473);
   box-shadow: none;
