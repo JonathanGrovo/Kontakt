@@ -3,11 +3,21 @@ const nameRegex = /^[A-Za-z\s]+$/;
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const phoneRegex = /^(\d{10}|\d{3}-\d{3}-\d{4})$/;
 
-function validEntries (firstname, lastname, email, phonenumber) {
+function validEntries (firstname, lastname, email, phonenumber, form) {
+
+    // element for the error message to reside
+    let errorContainer;
+
+    // determining whether the error will be displayed in the edit or add modal
+    if (form === 'editForm') {
+        errorContainer = document.getElementById('editError');
+    } else {
+        errorContainer = document.getElementById('addError');
+    }
+
     // if the user enters a nonvalid firstname
     if (!nameRegex.test(firstname)) {
     // display related error message
-    const errorContainer = document.querySelector(".error-message");
     errorContainer.textContent = "Not a valid first name";
 
     // ensure we aren't displaying it too fast
@@ -22,7 +32,6 @@ function validEntries (firstname, lastname, email, phonenumber) {
 
     } else if (!nameRegex.test(lastname)) { // if nonvalid last name
     // display related error message
-    const errorContainer = document.querySelector(".error-message");
     errorContainer.textContent = "Not a valid last name";
 
     // ensure we aren't displaying it too fast
@@ -37,7 +46,6 @@ function validEntries (firstname, lastname, email, phonenumber) {
 
     } else if (!emailRegex.test(email)) { // if nonvalid email
         // display related error message
-        const errorContainer = document.querySelector(".error-message");
         errorContainer.textContent = "Not a valid email address";
 
         // ensure we aren't displaying it too fast
@@ -52,7 +60,6 @@ function validEntries (firstname, lastname, email, phonenumber) {
 
     } else if (!phoneRegex.test(phonenumber)) { // if nonvalid phone number
         // display related error message
-        const errorContainer = document.querySelector(".error-message");
         errorContainer.textContent = "Not a valid phone number";
 
         // ensure we aren't displaying it too fast

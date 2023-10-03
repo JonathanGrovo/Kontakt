@@ -1,7 +1,7 @@
 // get modal element and form element, as well as the modal content element
 const editModal = document.getElementById('editModal');
-const editForm = document.getElementById('editForm');
 const editModalContent = document.getElementById('editModalContent');
+const editForm = document.getElementById('editForm');
 
 // initial field values
 let initFirstname;
@@ -40,22 +40,22 @@ function trackChange(fieldName) {
   }
 }
 
-// save button element
-const submitButton = document.querySelector('.save-btn');
+// want to specifically get the save button related to the edit form
+const editSubmitButton = document.getElementById('editBtn');
 
 // event listeners for input fields to track changes
-const inputFields = document.querySelectorAll('.modal-input input');
+const inputFields = document.querySelectorAll('.editInput input'); // gets only edit input fields
 inputFields.forEach((input) => {
   const fieldName = input.getAttribute('name'); // gets the field name
   input.addEventListener('input', () => {
-    trackChange(fieldName) // call trackChange with the fieldname
+    trackChange(fieldName); // call trackChange with the fieldname
     // if there are changes to a field
     if (hasChanges()) {
       // allow form submission
-      submitButton.removeAttribute('disabled');
+      editSubmitButton.removeAttribute('disabled');
     } else {
       // prevent form submission
-      submitButton.setAttribute('disabled', true);
+      editSubmitButton.setAttribute('disabled', true);
     }
   })
 })
@@ -78,7 +78,7 @@ editForm.addEventListener('submit', function (event) {
   const contact_id = document.getElementById('contact_id').value;
 
   // send data to server if we have valid input
-  if (validEntries(newFirstname, newLastname, newEmail, newPhonenumber)) {
+  if (validEntries(newFirstname, newLastname, newEmail, newPhonenumber, 'editForm')) {
     fetch('updateContact.php', {
       method: 'POST',
       body: JSON.stringify({
@@ -116,12 +116,13 @@ editForm.addEventListener('submit', function (event) {
   // Function to show the edit contact modal
 function showEditModal() {
     editModal.style.display = 'block';
+
     // reset flags on modal open
     for (const field in changesMade) {
       changesMade[field] = false; // reset each flag to false
     }
     // initially set the button to not be clickable
-    submitButton.setAttribute('disabled', true);
+    editSubmitButton.setAttribute('disabled', true);
 
     // fancy transition in
     setTimeout(function () {
@@ -145,7 +146,7 @@ function hideEditModal() {
 document.body.addEventListener('click', function (event) {
   if (event.target.classList.contains('edit-button')) {
       showEditModal();
-  } else if (event.target.classList.contains('close')) {
+  } else if (event.target.classList.contains('editClose')) { // may need to edit this line
       hideEditModal();
   }
 })

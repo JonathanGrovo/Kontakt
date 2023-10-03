@@ -36,44 +36,70 @@
     <!-- The hyperlink just runs logout.php -->
     <a href="logout.php">logout</a>
 
-    <!-- prevents default form submission event -->
-    <form onsubmit="event.preventDefault();">
-      <h1>create contact</h1>
-      <!-- field for adding the new contact first name -->
-      <input
-        type="text"
-        id="firstname"
-        placeholder="First Name"
-        name="firstname"
-        required
-      />
-      <!-- field for adding the new contact last name -->
-      <input
-        type="text"
-        id="lastname"
-        placeholder="Last Name"
-        name="lastname"
-        required
-      />
-      <!-- field for adding the new contact email -->
-      <input
-        type="text"
-        id="email"
-        placeholder="Email Address"
-        name="email"
-        required
-      />
-      <!-- field for adding the new contact phone number -->
-      <input
-        type="text"
-        id="phonenumber"
-        placeholder="Phone Number"
-        name="phonenumber"
-        required
-      />
+    <button class="add-contact">ADD CONTACT</button>
 
-      <button type="submit">add contact</button>
-    </form>
+    <!-- user wants to edit contact (modal) -->
+    <div id="addModal" class="modal">
+      <div id="addModalContent" class="modal-content">
+        <span class="close close-styling addClose"
+          ><i class="fa-solid fa-xmark close addClose"></i
+        ></span>
+        <h1>Add Contact</h1>
+        <!-- where error messages are displayed -->
+        <div class="error-message" id="addError"></div>
+        <form id="addForm" onsubmit="event.preventDefault();">
+          <!-- input fields for editing contact information -->
+          <!-- field for adding first name -->
+          <div class="modal-input addInput">
+            <input
+              type="text"
+              id="firstname"
+              placeholder="First Name"
+              name="firstname"
+              required
+            />
+            <i class="bx bxs-user"></i>
+          </div>
+          <!-- field for adding last name -->
+          <div class="modal-input addInput">
+            <input
+              type="text"
+              id="lastname"
+              placeholder="Last Name"
+              name="lastname"
+              required
+            />
+            <i class="fa-solid fa-users"></i>
+          </div>
+          <!-- field for adding email address -->
+          <div class="modal-input addInput">
+            <input
+              type="text"
+              id="email"
+              placeholder="Email Address"
+              name="email"
+              required
+            />
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+          <!-- field for adding phone number -->
+          <div class="modal-input addInput">
+            <input
+              type="text"
+              id="phonenumber"
+              placeholder="Phone Number"
+              name="phonenumber"
+              required
+            />
+            <i class="fa-solid fa-phone"></i>
+          </div>
+          <!-- submit button for the form -->
+          <button type="submit" id="addBtn" class="btn save-btn">
+            Add Contact
+          </button>
+        </form>
+      </div>
+    </div>
 
     <!-- allows user to search for a certain contact -->
     <form id="searchForm" method="get">
@@ -91,16 +117,16 @@
     <!-- user wants to edit contact (modal) -->
     <div id="editModal" class="modal">
       <div id="editModalContent" class="modal-content">
-        <span class="close close-styling"
-          ><i class="fa-solid fa-xmark close"></i
+        <span class="close close-styling editClose"
+          ><i class="fa-solid fa-xmark close editClose"></i
         ></span>
         <h1>Edit Contact</h1>
         <!-- where error messages are displayed -->
-        <div class="error-message"></div>
+        <div class="error-message" id="editError"></div>
         <form id="editForm" onsubmit="event.preventDefault();">
           <!-- input fields for editing contact information -->
           <!-- field for editing first name -->
-          <div class="modal-input">
+          <div class="modal-input editInput">
             <input
               type="text"
               id="newFirstname"
@@ -111,7 +137,7 @@
             <i class="bx bxs-user"></i>
           </div>
           <!-- field for editing last name -->
-          <div class="modal-input">
+          <div class="modal-input editInput">
             <input
               type="text"
               id="newLastname"
@@ -122,7 +148,7 @@
             <i class="fa-solid fa-users"></i>
           </div>
           <!-- field for editing email address -->
-          <div class="modal-input">
+          <div class="modal-input editInput">
             <input
               type="text"
               id="newEmail"
@@ -133,7 +159,7 @@
             <i class="fa-solid fa-envelope"></i>
           </div>
           <!-- field for editing phone number -->
-          <div class="modal-input">
+          <div class="modal-input editInput">
             <input
               type="text"
               id="newPhonenumber"
@@ -145,7 +171,10 @@
           </div>
           <!-- hidden field to store the contact_id, helps with identifying user on backend -->
           <input type="hidden" id="contact_id" name="contact_id" />
-          <button type="submit" class="btn save-btn">Save Changes</button>
+          <!-- submit button for the form -->
+          <button type="submit" id="editBtn" class="btn save-btn">
+            Save Changes
+          </button>
         </form>
       </div>
     </div>
