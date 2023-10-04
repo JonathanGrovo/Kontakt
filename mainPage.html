@@ -11,6 +11,7 @@
     <!-- sheets used for styling the page -->
     <link rel="stylesheet" href="login.css" />
     <link rel="stylesheet" href="modal.css" />
+    <link rel="stylesheet" href="mainPage.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
@@ -31,14 +32,34 @@
   </head>
 
   <body>
+    <!-- ========================== on page elements ============================== -->
+
     <!-- canvas for particles -->
     <canvas id="backgroundCanvas"></canvas>
     <!-- The hyperlink just runs logout.php -->
-    <a href="logout.php">logout</a>
+    <a id="logoutButton" href="logout.php"
+      ><i class="fa-solid fa-right-from-bracket"></i>
+      <span class="logoutButtonText">Logout</span></a
+    >
 
     <button class="add-contact">ADD CONTACT</button>
 
-    <!-- user wants to edit contact (modal) -->
+    <!-- allows user to search for a certain contact -->
+    <form id="searchForm" method="get">
+      <input
+        type="text"
+        id="searchInput"
+        name="search"
+        placeholder="Search contacts"
+      />
+    </form>
+
+    <!-- holds all the readable contacts -->
+    <div id="contactList"></div>
+
+    <!-- =========================== modal elements ============================== -->
+
+    <!-- +++++++ user wants to edit contact (modal) +++++++++ -->
     <div id="addModal" class="modal">
       <div id="addModalContent" class="modal-content">
         <span class="close close-styling addClose"
@@ -101,20 +122,7 @@
       </div>
     </div>
 
-    <!-- allows user to search for a certain contact -->
-    <form id="searchForm" method="get">
-      <input
-        type="text"
-        id="searchInput"
-        name="search"
-        placeholder="Search contacts"
-      />
-    </form>
-
-    <!-- holds all the readable contacts -->
-    <div id="contactList"></div>
-
-    <!-- user wants to edit contact (modal) -->
+    <!-- +++++++++++++ user wants to edit contact (modal) +++++++++++++++ -->
     <div id="editModal" class="modal">
       <div id="editModalContent" class="modal-content">
         <span class="close close-styling editClose"
@@ -178,6 +186,26 @@
         </form>
       </div>
     </div>
+
+    <!-- +++++++++++++ user wants to delete contact (modal) +++++++++++++++ -->
+    <div id="deleteModal" class="modal">
+      <div id="deleteModalContent" class="modal-content">
+        <span class="close close-styling deleteClose"
+          ><i class="fa-solid fa-xmark close deleteClose"></i
+        ></span>
+        <h1>Confirm Delete?</h1>
+        <!-- where error messages are displayed -->
+        <div class="error-message" id="deleteError"></div>
+        <form id="deleteForm" onsubmit="event.preventDefault();">
+          <!-- hidden field to store the contact_id, helps with identifying user on backend -->
+          <!-- <input type="hidden" id="contact_id" name="contact_id" /> -->
+          <!-- submit button for the form -->
+          <button type="submit" id="deleteBtn" class="btn save-btn">Yes</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- =============================== scripts ================================ -->
 
     <!-- script for background animation -->
     <script src="particles.js"></script>

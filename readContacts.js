@@ -39,7 +39,7 @@ function displayContacts(contacts) {
         `<p>name: ${contact.firstname} ${contact.lastname}</p>
         <p>email and phone: ${contact.email} ${contact.phonenumber}</p>
         <button onclick="getCredentials('${contact.firstname}', '${contact.lastname}', '${contact.email}', '${contact.phonenumber}', '${contact.contact_id}');" class="edit-button";>Edit</button>
-        <button onclick="deleteContact('${contact.contact_id}')">Delete</button>`
+        <button onclick="getId('${contact.contact_id}');" class='delete-contact';>Delete</button>`
 
         // append contactElement to contactList
         contactList.appendChild(contactElement);

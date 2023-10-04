@@ -1,0 +1,31 @@
+#logoutButton {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 20px;
+    width: 55px;
+    background-color: rgba(114, 137, 218, 1);
+    text-decoration: none;
+    color: transparent;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    transition: width 0.4s ease-in-out, opacity 0.2s ease-in-out, color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    overflow: hidden;
+    white-space: nowrap; /* Prevent text from wrapping */
+    text-transform: none;
+  }
+  
+  /* applied on button hover */
+  #logoutButton:hover {
+    width: 114px; /* Expand button width on hover */
+    background-color: rgb(76, 100, 189);
+    color: #fff; /* Show text on hover */
+  }
+
+  /* applied to icon in button */
+  #logoutButton i{
+    color: #fff;
+    opacity: 1;
+  }
