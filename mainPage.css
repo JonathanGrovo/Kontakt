@@ -29,3 +29,58 @@
     color: #fff;
     opacity: 1;
   }
+
+  .maincontainer {
+    /* width: 1000px;
+    height: 1000px; */
+  }
+
+  .topbar {
+    display: flex; /* helps display children side by side */
+    align-items: center; /* vertically center items in topbar */
+    justify-content: center;
+  }
+
+  .add-contact {
+    padding: 10px 24px;
+    background-color: rgba(114, 137, 218, 1);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    font-size: 16px;
+    margin-right: 10px; /* space between button and input */
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  /* applied on button hover */
+  .add-contact:hover {
+    background-color: rgb(76, 100, 189);
+    color: #fff; /* Show text on hover */
+  }
+
+  .add-contact i {
+    padding-right: 6px;
+  }
+
+  #searchInput {
+    flex: 1;
+    border-radius: 50px;
+  }
+
+
+
+  /* CSS for pagination */
+#paginationControls {
+  margin-top: 10px;
+}
+
+.page-link {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.current-page {
+  font-weight: bold;
+}

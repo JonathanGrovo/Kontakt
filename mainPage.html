@@ -41,21 +41,30 @@
       ><i class="fa-solid fa-right-from-bracket"></i>
       <span class="logoutButtonText">Logout</span></a
     >
+    <!-- contains all the central elements of the page -->
+    <div class="maincontainer">
+      <!-- container for add contact button and search bar -->
+      <div class="topbar">
+        <button class="add-contact">
+          <i class="fa-solid fa-user-plus"></i>Add Contact
+        </button>
 
-    <button class="add-contact">ADD CONTACT</button>
+        <!-- allows user to search for a certain contact -->
+        <form id="searchForm" method="get">
+          <input
+            type="text"
+            id="searchInput"
+            name="search"
+            placeholder="Search contacts"
+          />
+        </form>
+      </div>
 
-    <!-- allows user to search for a certain contact -->
-    <form id="searchForm" method="get">
-      <input
-        type="text"
-        id="searchInput"
-        name="search"
-        placeholder="Search contacts"
-      />
-    </form>
-
-    <!-- holds all the readable contacts -->
-    <div id="contactList"></div>
+      <!-- holds all the readable contacts -->
+      <div id="contactList"></div>
+      <!-- page numbers generate here -->
+      <div id="paginationControls"></div>
+    </div>
 
     <!-- =========================== modal elements ============================== -->
 
