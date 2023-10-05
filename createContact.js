@@ -89,7 +89,7 @@ addForm.addEventListener('submit', function (event) {
           // Close the modal
           hideAddModal();
           // update the list of contacts on the main page
-          updateContacts();
+          updateContacts('create');
         } else {
           alert('contact not added successfully');
           console.error(data.message);

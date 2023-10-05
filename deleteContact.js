@@ -1,27 +1,3 @@
-// // function for deleting contact
-// function deleteContact(contact_id) {
-//     // AJAX request to php script to delete contact with specified ID
-//     fetch('deleteContact.php', {
-//         method: 'POST',
-//         body: JSON.stringify({ contact_id }),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     })
-//     .then((response) => response.json())
-//     .then((data) => {
-//         if (data.success) {
-//             window.alert('successful delete');
-//         } else {
-//             console.log('data pack received:' + data);
-//             console.log('contactid sent: ' + contact_id);
-//         }
-//     })
-//     .catch((error) => {
-//         console.error('Error:', error);
-//     });
-// }
-
 // the contact who we want to delete
 let deleteContact;
 
@@ -31,11 +7,6 @@ function getId (contact_id) {
     console.log(deleteContact);
 }
 
-
-
-
-
-
 // get modal element and form element, as well as the modal content element
 const deleteModal = document.getElementById('deleteModal');
 const deleteModalContent = document.getElementById('deleteModalContent');
@@ -43,26 +14,6 @@ const deleteForm = document.getElementById('deleteForm');
 
 // want to specifically get the save button related to the add form
 const deleteSubmitButton = document.getElementById('deleteBtn');
-
-
-// // event listeners for input fields to track changes
-// const addInputFields = document.querySelectorAll('.addInput input'); // gets only add input fields
-// addInputFields.forEach((input) => {
-//   const fieldName = input.getAttribute('name'); // gets the field name
-//   input.addEventListener('input', () => {
-//     trackAddChange(fieldName); // call trackChange with the fieldname
-//     // if at least one field is not empty
-//     if (notAllEmpty()) {
-//       // allow form submission
-//       console.log('true');
-//       addSubmitButton.removeAttribute('disabled');
-//     } else {
-//       // disallow form submission
-//       addSubmitButton.setAttribute('disabled', true);
-//     }
-//   })
-// })
-
 
 // when the submit button is pressed for delete a contact
 deleteForm.addEventListener('submit', function (event) {
@@ -88,7 +39,7 @@ deleteForm.addEventListener('submit', function (event) {
       // Close the modal
       hideDeleteModal();
       // update the list of contacts on the main page
-      updateContacts();
+      updateContacts('delete');
     } else {
       alert('contact not deleted successfully'); // WANT TO HAVE SOME KIND OF CONFIRMATION MESSAGER
       console.error(data.message);
