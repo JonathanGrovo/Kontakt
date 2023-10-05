@@ -87,27 +87,3 @@ if ($results->num_rows > 0) {
     echo json_encode(["success" => false, "message" => "No contacts found", "totalPages" => 0]);
     exit();
 }
-
-
-// // if there are contacts related to the page
-// if ($results->num_rows > 0) {
-//     $contacts = []; // array that will contain our contacts
-
-//     // fetch each contact related to search and add it to contacts array
-//     while ($row = $results->fetch_assoc()) {
-//         $contacts[] = $row;
-//     }
-
-//     // send the list of contacts related to the page as a JSON response
-//     echo json_encode(["success" => true, "contacts" => $contacts, "totalPages" => $totalPages]);
-//     exit();
-// } else if ($totalPages > 0) { // if the current page we are at would no longer exist, but contacts still do
-
-
-
-//     echo json_encode(["success" => true, "message" => "going back", "totalPages" => $totalPages - 1]);
-//     exit();
-// }
-
-
-// this code SHOULD return a list of contacts related to the user currently in session depending on their search criteria.

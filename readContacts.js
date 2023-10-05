@@ -1,45 +1,6 @@
 // global variable that keeps track of the current page
 let currentPage = 1;
 
-// global variable keeping track of the total number of pages
-
-// // function that fetches contacts for a specific page
-// function fetchContactsForPage(searchVal, currentPage) {
-//     // the php we want to communicate with
-//     fetch('readContacts.php', {
-//         // the http method we want to use
-//         method: 'POST',
-//         // current page included in the request
-//         body: JSON.stringify({ searchVal, currentPage }),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         },
-//     })
-//     .then((response) => response.json()) // parse server response back into js object notation
-//     .then((data) => {
-//         if (data.success) { // if we successfully fetched contacts
-//             // call function to display contacts in html
-//             displayContacts(data.contacts);
-//             // update pagination controls
-//             console.log('KIST');
-//             // console.log(updatePagination(data.totalPages));
-//             return updatePagination(data.totalPages);
-
-//             // helps us move pages in creation and deletion processes
-//             // return data.totalPages;
-//         } else {
-//             console.error(data);
-
-//             // we don't want to display contacts if our query failed
-//             const contactList = document.getElementById('contactList');
-//             contactList.innerHTML = '';
-//         }
-//     })
-//     .catch((error) => {
-//         console.error('Error:', error);
-//     });
-// }
-
 // function that fetches contacts for a specific page
 async function fetchContactsForPage(searchVal, currentPage) {
     try {
@@ -94,12 +55,6 @@ function updatePagination(totalPages) {
         // add this pageLink span as an element in the pagination controls
         paginationControls.appendChild(pageLink);
     }
-
-    // console.log('# of pages total:' + totalPages);
-    // if (totalPages > currentPage) {
-    //     currentPage = totalPages;
-    // }
-    console.log('totalpages: '+ totalPages);
     return totalPages;
 }
 
@@ -135,7 +90,6 @@ const searchInput = document.getElementById('searchInput');
 // input event listener, triggers on input change in field
 searchInput.addEventListener('input', function () {
     // call the function that helps update the contacts
-    // currentPage = 1;
     updateContacts('search');
 });
 
@@ -153,80 +107,33 @@ async function updateContacts(operation) {
         fetchContactsForPage(searchVal, currentPage);
         return;
     } else if (operation === 'delete') { // we want to update contacts due to a deletion
-        // if (fetchContactsForPage(searchVal, currentPage) < currentPage) { // we have less total pages than our current page number
-        //     currentPage -= 1;
-        //     return;
-        // }
-        // if (currentPage != 1) {
-        //     currentPage -= 1;
-        // }
-        // fetchContactsForPage(searchVal, currentPage)
-        // .then((totalPages) => {
-        //     // check if the current page is empty
-        //     if (currentPage > 1 && data.contacts.length === 0) {
-        //         currentPage -= 1;
-        //     }
-        // });
-        // currentPage = 1; // set us back to the first page
 
-
+        // bit of a lazy approach since i didn't want to deal with more backend than i have to.
+        // essentially runs the query twice to avoid loading an empty page
         const wasCurrentPage = currentPage;
-        currentPage = 1;
+        currentPage = 1; // avoids loading empty page
+
+        // want to wait for this process since its return is important here
         const totalPages = await fetchContactsForPage(searchVal, currentPage);
-        console.log('we now have this many pages: ' + totalPages);
         if (totalPages < wasCurrentPage) {
             currentPage = totalPages;
-            console.log(currentPage, totalPages);
         } else {
             currentPage = wasCurrentPage;
-            console.log(currentPage, totalPages);
         }
 
         fetchContactsForPage(searchVal, currentPage);
         return;
     } else if (operation === 'create') { // we want to update contacts due to a creation
-        // fetch contacts and get the total number of pages
-        // fetchContactsForPage(searchVal, currentPage)
-        // .then((totalPages) => {
-        //     // set currentPage to the last page if it exceeds totalPage
-        //     if (currentPage > totalPages) {
-        //         currentPage = totalPages;
-        //     }
-        // });
-        // currentPage = 1; // set us back to the first page
-        // totalP = fetchContactsForPage(searchVal, currentPage);
-        // console.log(totalP);
 
+        // same approach as above, except we always skip to the last page available
         const totalPages = await fetchContactsForPage(searchVal, currentPage);
-        setTimeout(function() {
-            console.log('total pages' + totalPages);
-        }, 1000);
         currentPage = totalPages;
         fetchContactsForPage(searchVal, currentPage);
-        setTimeout(function() {
-            console.log(currentPage + 'is the curr page after create');
-        }, 1000);
-
         return;
-        // if (fetchContactsForPage(searchVal, currentPage) > currentPage) { // we have more total pages than our current page number
-        //     currentPage += 1;
-        //     return;
-        // } else {
-        //     currentPage = 
-        // }
-        // return;
     } else { // in all other cases, the currentPage should not need our manual modification
         fetchContactsForPage(searchVal, currentPage);
         return;
     }
-    // when its a search
-    // when its a create
-    // when its a delete
-
-    // // get whatever is in the searchbar
-    // const searchVal = searchInput.value.trim();
-    // fetch contacts related to search criteria and current page
-    // fetchContactsForPage(searchVal, currentPage);
 }
 
 // listen for when dom is loaded

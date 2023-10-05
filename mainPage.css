@@ -50,7 +50,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     cursor: pointer;
     font-size: 16px;
-    margin-right: 10px; /* space between button and input */
+    margin-right: 100px; /* space between button and input */
     transition: background-color 0.2s ease-in-out;
   }
 
@@ -66,14 +66,19 @@
 
   #searchInput {
     flex: 1;
-    border-radius: 50px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .2);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    color: #fff;
+    border-radius: 100px;
+    padding: 10px 40px;
   }
-
-
 
   /* CSS for pagination */
 #paginationControls {
   margin-top: 10px;
+  color: #fff;
 }
 
 .page-link {
@@ -83,4 +88,5 @@
 
 .current-page {
   font-weight: bold;
+  background-color: rgb(76, 100, 189);
 }
