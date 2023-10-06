@@ -45,8 +45,8 @@
     <div class="maincontainer">
       <!-- container for add contact button and search bar -->
       <div class="topbar">
-        <button class="add-contact">
-          <i class="fa-solid fa-user-plus"></i>Add Contact
+        <button class="add-contact add-contact-container">
+          <i class="fa-solid fa-user-plus add-contact"></i>Add Contact
         </button>
 
         <!-- allows user to search for a certain contact -->
@@ -60,6 +60,20 @@
           />
         </form>
       </div>
+
+      <table id="contactTable" class="contact-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone Number</th>
+            <th>Date Created</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
 
       <!-- holds all the readable contacts -->
       <div id="contactList"></div>

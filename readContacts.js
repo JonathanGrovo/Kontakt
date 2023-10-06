@@ -60,29 +60,61 @@ function updatePagination(totalPages) {
 
 // function to display contacts in the html
 function displayContacts(contacts) {
-    const contactList = document.getElementById('contactList');
 
-    // clear existing content in the contactList element
-    contactList.innerHTML = '';
+    // get reference to table body
+    const tableBody = document.querySelector('#contactTable tbody');
 
-    // interate through contacts and create html elements to display them
+    tableBody.innerHTML = '';
+
+    // iterate through contacts and create table rows
     contacts.forEach((contact) => {
-        const contactElement = document.createElement('div');
-        contactElement.innerHTML =
-        `<span class="tableName">${contact.firstname} ${contact.lastname}</span>
-        <span class="tableEmail">${contact.email}</span>
-        <span class="tablePhone">${contact.phonenumber}</span>
-        <button onclick="getCredentials('${contact.firstname}', 
-        '${contact.lastname}', '${contact.email}', 
-        '${contact.phonenumber}', '${contact.contact_id}');" 
-        class="edit-button";><i class="fa-solid fa-pen-to-square"></i>Edit</button>
-        <button onclick="getId('${contact.contact_id}');" 
-        class='delete-contact';><i class="fa-solid fa-trash"></i>Delete</button>`
+        const tableRow = document.createElement('tr');
+        tableRow.innerHTML = `
+        <td>${contact.firstname} ${contact.lastname}</td>
+        <td>${contact.email}</td>
+        <td>${contact.phonenumber}</td>
+        <td>${contact.datecreated}</td>
+        <td>
+          <button class="edit-button"; onclick="getCredentials('${contact.firstname}', '${contact.lastname}', '${contact.email}', '${contact.phonenumber}', '${contact.contact_id}');">
+            <i class="fa-solid fa-pen-to-square edit-button"></i>Edit
+          </button>
+        </td>
+        <td>
+          <button class="delete-contact"; onclick="getId('${contact.contact_id}');">
+            <i class="fa-solid fa-trash delete-contact"></i>Delete
+          </button>
+        </td>
+      `;
 
-        // append contactElement to contactList
-        contactList.appendChild(contactElement);
-    });
+        // append the table row to the table body
+        tableBody.appendChild(tableRow);
+    })
 }
+
+//     const contactList = document.getElementById('contactList');
+
+//     // clear existing content in the contactList element
+//     contactList.innerHTML = '';
+
+//     // interate through contacts and create html elements to display them
+//     contacts.forEach((contact) => {
+//         const contactElement = document.createElement('div');
+//         contactElement.innerHTML =
+//         `<span class="tableName">${contact.firstname} ${contact.lastname}</span>
+//         <span class="tableEmail">${contact.email}</span>
+//         <span class="tablePhone">${contact.phonenumber}</span>
+//         <span class="dateCreated">${contact.datecreated}</span>
+//         <button onclick="getCredentials('${contact.firstname}', 
+//         '${contact.lastname}', '${contact.email}', 
+//         '${contact.phonenumber}', '${contact.contact_id}');" 
+//         class="edit-button";><i class="fa-solid fa-pen-to-square edit-button"></i>Edit</button>
+//         <button onclick="getId('${contact.contact_id}');" 
+//         class='delete-contact';><i class="fa-solid fa-trash delete-contact"></i>Delete</button>`
+
+//         // append contactElement to contactList
+//         contactList.appendChild(contactElement);
+//     });
+// }
 
 // get search input element
 const searchInput = document.getElementById('searchInput');

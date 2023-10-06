@@ -123,12 +123,14 @@ body {
 .login-title h2:nth-child(1) {
     position: absolute;
     color: transparent;
-    -webkit-text-stroke: 2px rgba( 114, 137, 218, 1);
+    /* -webkit-text-stroke: 2px rgba( 114, 137, 218, 1); */
+    -webkit-text-stroke: 2px rgb(255, 255, 255);
   }
 
   .login-title h2:nth-child(2) {
     position: relative;
-    color: rgba( 114, 137, 218, 1);
+    /* color: rgba( 114, 137, 218, 1); */
+    color: rgb(255, 255, 255);
     animation: water 4s ease-in-out infinite;
   }
 

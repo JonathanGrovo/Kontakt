@@ -41,12 +41,13 @@
     justify-content: center;
   }
 
-  .add-contact {
+  .add-contact-container {
     padding: 10px 24px;
     background-color: rgba(114, 137, 218, 1);
     color: #fff;
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
+    border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     cursor: pointer;
     font-size: 16px;
@@ -55,7 +56,7 @@
   }
 
   /* applied on button hover */
-  .add-contact:hover {
+  .add-contact-container:hover {
     background-color: rgb(76, 100, 189);
     color: #fff; /* Show text on hover */
   }
@@ -72,7 +73,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     color: #fff;
     border-radius: 100px;
-    padding: 10px 40px;
+    padding: 10px 50px;
   }
 
   /* CSS for pagination */
@@ -89,4 +90,40 @@
 .current-page {
   font-weight: bold;
   background-color: rgb(76, 100, 189);
+}
+
+/* #contactList {
+  color: #fff;
+  max-width: 100%;
+  height: 400px;
+  padding: 10px;
+  overflow: auto;
+  box-sizing: border-box;
+} */
+
+/* @media (max-width: 600px) {
+  #contactList {
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
+} */
+
+#contactTable th, #contactTable td {
+  /* width: 150px; */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 200px;
+  max-width: 200px;
+  text-align: center;
+}
+
+#contactTable {
+  table-layout: fixed;
+  color: #fff;
+}
+
+#contactTable th, #contactTable td {
+  padding: 5px;
 }
