@@ -92,6 +92,13 @@ body {
     /* justify-content: center; */
 }
 
+/* .big-container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+} */
+
 /* container styling */
 .container {
     position: relative;
@@ -100,6 +107,7 @@ body {
     align-items: center; /* center items horizontally */
     justify-content: center; /*center items vertically */
     min-height: 100vh;
+    /* min-width: 100%; */
 }
 
 /* styling base properties of the login/registration title */
