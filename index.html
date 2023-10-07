@@ -35,49 +35,51 @@
     <canvas id="backgroundCanvas"></canvas>
     <noscript> moving particles (?) </noscript>
 
-    <div class="container">
-      <div class="login-title fadeable">
-        <!-- fadeable class just allows it to be faded in by a script that targets said class -->
-        <h2>Because Its Required</h2>
-        <h2>Because Its Required</h2>
-      </div>
+    <div class="main-container">
+      <div class="container">
+        <div class="login-title fadeable">
+          <!-- fadeable class just allows it to be faded in by a script that targets said class -->
+          <h2>Because Its Required</h2>
+          <h2>Because Its Required</h2>
+        </div>
 
-      <!-- wraps the entire login box -->
-      <div class="wrapper fadeable">
-        <!-- form for returning users. prevent default form submission and run loginUser function instead -->
-        <form onsubmit="event.preventDefault(); loginUser();">
-          <h1 class="fadeable">Login</h1>
-          <!-- where error messages are displayed -->
-          <div class="error-message"></div>
-          <!-- username field -->
-          <div class="input-box fadeable" id="input-box-username">
-            <input
-              type="text"
-              id="usernameField"
-              placeholder="Username"
-              name="username"
-              required
-            />
-            <i class="bx bxs-user"></i>
-          </div>
-          <!-- password field -->
-          <div class="input-box fadeable">
-            <input
-              type="password"
-              id="passwordField"
-              placeholder="Password"
-              name="password"
-              required
-            />
-            <i class="toggle-password fa-regular fa-eye"></i>
-          </div>
+        <!-- wraps the entire login box -->
+        <div class="wrapper fadeable">
+          <!-- form for returning users. prevent default form submission and run loginUser function instead -->
+          <form onsubmit="event.preventDefault(); loginUser();">
+            <h1 class="fadeable">Login</h1>
+            <!-- where error messages are displayed -->
+            <div class="error-message"></div>
+            <!-- username field -->
+            <div class="input-box fadeable" id="input-box-username">
+              <input
+                type="text"
+                id="usernameField"
+                placeholder="Username"
+                name="username"
+                required
+              />
+              <i class="bx bxs-user"></i>
+            </div>
+            <!-- password field -->
+            <div class="input-box fadeable">
+              <input
+                type="password"
+                id="passwordField"
+                placeholder="Password"
+                name="password"
+                required
+              />
+              <i class="toggle-password fa-regular fa-eye"></i>
+            </div>
 
-          <button type="submit" class="btn fadeable">Login</button>
+            <button type="submit" class="btn fadeable">Login</button>
 
-          <div class="register-link fadeable">
-            <p>Don't have an account? <a href="register.html">Register</a></p>
-          </div>
-        </form>
+            <div class="register-link fadeable">
+              <p>Don't have an account? <a href="register.html">Register</a></p>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
     <!-- script for background animation -->

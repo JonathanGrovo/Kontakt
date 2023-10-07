@@ -95,20 +95,16 @@ editForm.addEventListener('submit', function (event) {
       .then((response) => response.json())
       .then((data) => {
         if (data.success) {
-          // Update the contact list or take other necessary actions
-          // WANT TO DISPLAY SOME SUCCESS MESSAGER
           // Close the modal
           hideEditModal();
           // update the list of contacts on the main page
           updateContacts();
         } else {
           console.error(data.message);
-          // Handle the error appropriately
         }
       })
       .catch((error) => {
         console.error('Error:', error);
-        // Handle the error appropriately
       });
     }
 })

@@ -34,8 +34,6 @@ deleteForm.addEventListener('submit', function (event) {
   .then((response) => response.json()) // server response converted into js object
   .then((data) => {
     if (data.success) {
-      // Update the contact list or take other necessary actions
-      // WANT TO DISPLAY SOME SUCCESS MESSAGER
       // Close the modal
       hideDeleteModal();
       // update the list of contacts on the main page

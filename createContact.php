@@ -31,7 +31,7 @@ $phonenumber = $jsonData['phonenumber'];
 $sql = "SELECT * FROM contacts WHERE user='$currUser' AND firstname='$firstname' AND lastname='$lastname' AND email='$email' AND phonenumber='$phonenumber'";
 
 // contacts are allowed to share firstnames, lastnames, emails, and phonenumbers, or a combination of them, but never all four.
-// this is to ensure a user isn't accidentally inserting a duplicate contact. HANDLE THIS EDGE CASE LATER, MAY HANDLE RELATED EDGE CASES LATER
+// this is to ensure a user isn't accidentally inserting a duplicate contact.
 
 $results = $conn->query($sql); // runs the query and stores it in variable
 
@@ -47,5 +47,3 @@ if ($results->num_rows == 0) { // if we find no contacts that share exact creden
     echo json_encode(["success" => false, "message" => "This person is already a contact"]);
     exit();
 }
-
-// this code SHOULD create a contact given a user has provided something for the given fields

@@ -49,5 +49,3 @@ if ($conn->affected_rows > 0) { // if the query affected at least one row
     }
     exit();
 }
-
-// this code SHOULD allow the user to update a contact given their contact id

@@ -29,36 +29,6 @@ async function fetchContactsForPage(searchVal, currentPage) {
     }
 }
 
-// // function for updating pagination controls
-// function updatePagination(totalPages) {
-//     // get element that contains the controls
-//     const paginationControls = document.getElementById('paginationControls');
-//     paginationControls.innerHTML = '' // clear existing controls
-
-//     // for the total number of pages that exist for some set of contacts
-//     for (let page = 1; page <= totalPages; page++) {
-//         const pageLink = document.createElement('span'); // create a span for a pageLink
-//         pageLink.textContent = page; // adds the number of the page to the element
-//         pageLink.classList.add('page-link'); // adds page-link class to the element
-
-//         // highlight the current page we are on
-//         if (page === currentPage) {
-//             pageLink.classList.add('current-page');
-//         }
-
-//         // add click event listener to fetch contacts for the clicked page
-//         pageLink.addEventListener('click', () => {
-//             currentPage = page; // current page becomes whatever page got clicked on
-//             updateContacts('pageLink');
-//         });
-
-//         // add this pageLink span as an element in the pagination controls
-//         paginationControls.appendChild(pageLink);
-//     }
-//     return totalPages;
-// }
-
-
 // go back and look at this eventually
 
 function updatePagination(totalPages) {
@@ -78,7 +48,6 @@ function updatePagination(totalPages) {
 
     // Create "Previous" button
     const prevButton = document.createElement('span');
-    // prevButton.textContent = 'Previous';
     prevButton.innerHTML = '<i class="fa-solid fa-angles-left"></i>'
     prevButton.classList.add('page-link');
     if (currentPage === 1) {
@@ -127,14 +96,6 @@ function updatePagination(totalPages) {
 
     return totalPages;
 }
-
-
-
-
-
-
-
-
 
 
 // function to display contacts in the html
@@ -228,23 +189,3 @@ document.addEventListener('DOMContentLoaded', function () {
     // inital fetch to display all contacts on the first page
     fetchContactsForPage('', currentPage);
 })
-
-
-
-// Wait for the document to fully load
-document.addEventListener("DOMContentLoaded", function() {
-    requestAnimationFrame(function() {
-
-        const fadeElements = document.querySelectorAll(".fadeable");
-
-        fadeElements.forEach(function(element, index) {
-
-            const delay = index * 80; // rate at which elements are faded in
-
-            setTimeout(function() {
-                element.classList.add("fade-in");
-
-            }, delay);
-        })
-    })
-});

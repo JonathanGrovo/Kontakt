@@ -44,5 +44,3 @@ if ($conn->affected_rows > 0) { // if the query affected at least one row
     }
     exit();
 }
-
-// this code SHOULD delete a contact upon being granted a specifying contact id.

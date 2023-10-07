@@ -89,7 +89,7 @@ body {
     background: #36393e;
     min-height: 100vh;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 /* container styling */
@@ -144,6 +144,7 @@ body {
     padding: 30px 40px;
     margin-top: 50px;
     margin-bottom: 35px;
+    /* align-self: center; */
 }
 
 /* allow elements to be faded in on page load */
@@ -152,9 +153,7 @@ body {
 }
 
 .fade-in {
-    /* opacity: 0; initial opacity */
     animation: fadeIn 0.5s ease-in-out forwards;
-    /* transition: opacity 1s ease-in-out forwards; */
     opacity: 1;
 }
 
