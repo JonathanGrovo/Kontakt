@@ -30,7 +30,7 @@ $searchVal = $jsonData['searchVal'];
 $page = isset($jsonData['currentPage']) ? $jsonData['currentPage'] : 1; // if page is not provided, default to page 1
 
 // number of records we want to display per page
-$recordsPerPage = 8;
+$recordsPerPage = 1;
 
 // calculate the offset (determines what records to start at)
 $offset = ($page - 1) * $recordsPerPage;

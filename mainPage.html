@@ -51,29 +51,31 @@
 
         <!-- allows user to search for a certain contact -->
         <form id="searchForm" method="get">
-          <i class="fa-solid fa-magnifying-glass"></i>
           <input
             type="text"
             id="searchInput"
             name="search"
             placeholder="Search contacts"
           />
+          <i class="fa-solid fa-magnifying-glass"></i>
         </form>
       </div>
 
-      <table id="contactTable" class="contact-table">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-            <th>Date Created</th>
-            <th>Edit</th>
-            <th>Delete</th>
-          </tr>
-        </thead>
-        <tbody></tbody>
-      </table>
+      <div class="tableContainer">
+        <table id="contactTable" class="contact-table">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Date Created</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
 
       <!-- holds all the readable contacts -->
       <div id="contactList"></div>

@@ -29,34 +29,113 @@ async function fetchContactsForPage(searchVal, currentPage) {
     }
 }
 
-// function for updating pagination controls
+// // function for updating pagination controls
+// function updatePagination(totalPages) {
+//     // get element that contains the controls
+//     const paginationControls = document.getElementById('paginationControls');
+//     paginationControls.innerHTML = '' // clear existing controls
+
+//     // for the total number of pages that exist for some set of contacts
+//     for (let page = 1; page <= totalPages; page++) {
+//         const pageLink = document.createElement('span'); // create a span for a pageLink
+//         pageLink.textContent = page; // adds the number of the page to the element
+//         pageLink.classList.add('page-link'); // adds page-link class to the element
+
+//         // highlight the current page we are on
+//         if (page === currentPage) {
+//             pageLink.classList.add('current-page');
+//         }
+
+//         // add click event listener to fetch contacts for the clicked page
+//         pageLink.addEventListener('click', () => {
+//             currentPage = page; // current page becomes whatever page got clicked on
+//             updateContacts('pageLink');
+//         });
+
+//         // add this pageLink span as an element in the pagination controls
+//         paginationControls.appendChild(pageLink);
+//     }
+//     return totalPages;
+// }
+
+
+// go back and look at this eventually
+
 function updatePagination(totalPages) {
-    // get element that contains the controls
     const paginationControls = document.getElementById('paginationControls');
-    paginationControls.innerHTML = '' // clear existing controls
+    paginationControls.innerHTML = ''; // Clear existing controls
 
-    // for the total number of pages that exist for some set of contacts
-    for (let page = 1; page <= totalPages; page++) {
-        const pageLink = document.createElement('span'); // create a span for a pageLink
-        pageLink.textContent = page; // adds the number of the page to the element
-        pageLink.classList.add('page-link'); // adds page-link class to the element
+    const numDisplayedPages = 5; // Number of pages to display
 
-        // highlight the current page we are on
+    // Calculate the range of page numbers to display
+    let startPage = Math.max(1, currentPage - Math.floor(numDisplayedPages / 2));
+    let endPage = Math.min(totalPages, startPage + numDisplayedPages - 1);
+
+    // Adjust startPage if endPage is at the end of the range
+    if (endPage === totalPages) {
+        startPage = Math.max(1, endPage - numDisplayedPages + 1);
+    }
+
+    // Create "Previous" button
+    const prevButton = document.createElement('span');
+    // prevButton.textContent = 'Previous';
+    prevButton.innerHTML = '<i class="fa-solid fa-angles-left"></i>'
+    prevButton.classList.add('page-link');
+    if (currentPage === 1) {
+        prevButton.classList.add('disabled'); // Gray out the button
+        prevButton.style.pointerEvents = 'none'; // Disable click event
+    } else {
+        prevButton.addEventListener('click', () => {
+            currentPage--;
+            updatePagination();
+            updateContacts(); // Update the contacts for the new page
+        });
+    }
+    paginationControls.appendChild(prevButton);
+
+    // Create page links within the range
+    for (let page = startPage; page <= endPage; page++) {
+        const pageLink = document.createElement('span');
+        pageLink.textContent = page;
+        pageLink.classList.add('page-link');
         if (page === currentPage) {
             pageLink.classList.add('current-page');
         }
-
-        // add click event listener to fetch contacts for the clicked page
         pageLink.addEventListener('click', () => {
-            currentPage = page; // current page becomes whatever page got clicked on
-            updateContacts('pageLink');
+            currentPage = page;
+            updatePagination();
+            updateContacts(); // Update the contacts for the new page
         });
-
-        // add this pageLink span as an element in the pagination controls
         paginationControls.appendChild(pageLink);
     }
+
+    // Create "Next" button
+    const nextButton = document.createElement('span');
+    nextButton.innerHTML = '<i class="fa-solid fa-angles-right"></i>'
+    nextButton.classList.add('page-link');
+    if (currentPage === totalPages) {
+        nextButton.classList.add('disabled'); // Gray out the button
+        nextButton.style.pointerEvents = 'none'; // Disable click event
+    } else {
+        nextButton.addEventListener('click', () => {
+            currentPage++;
+            updatePagination();
+            updateContacts(); // Update the contacts for the new page
+        });
+    }
+    paginationControls.appendChild(nextButton);
+
     return totalPages;
 }
+
+
+
+
+
+
+
+
+
 
 // function to display contacts in the html
 function displayContacts(contacts) {
@@ -75,14 +154,15 @@ function displayContacts(contacts) {
         <td>${contact.phonenumber}</td>
         <td>${contact.datecreated}</td>
         <td>
-          <button class="edit-button"; onclick="getCredentials('${contact.firstname}', '${contact.lastname}', '${contact.email}', '${contact.phonenumber}', '${contact.contact_id}');">
-            <i class="fa-solid fa-pen-to-square edit-button"></i>Edit
+          <button class="edit-button edit-button-styling"; 
+          onclick="getCredentials('${contact.firstname}', '${contact.lastname}', 
+          '${contact.email}', '${contact.phonenumber}', '${contact.contact_id}');">
+            <i class="fa-solid fa-pen-to-square edit-button"></i>
           </button>
         </td>
         <td>
-          <button class="delete-contact"; onclick="getId('${contact.contact_id}');">
-            <i class="fa-solid fa-trash delete-contact"></i>Delete
-          </button>
+          <button class="delete-contact delete-contact-styling"; 
+          onclick="getId('${contact.contact_id}');"><i class="fa-solid fa-trash delete-contact"></i></button>
         </td>
       `;
 
@@ -90,31 +170,6 @@ function displayContacts(contacts) {
         tableBody.appendChild(tableRow);
     })
 }
-
-//     const contactList = document.getElementById('contactList');
-
-//     // clear existing content in the contactList element
-//     contactList.innerHTML = '';
-
-//     // interate through contacts and create html elements to display them
-//     contacts.forEach((contact) => {
-//         const contactElement = document.createElement('div');
-//         contactElement.innerHTML =
-//         `<span class="tableName">${contact.firstname} ${contact.lastname}</span>
-//         <span class="tableEmail">${contact.email}</span>
-//         <span class="tablePhone">${contact.phonenumber}</span>
-//         <span class="dateCreated">${contact.datecreated}</span>
-//         <button onclick="getCredentials('${contact.firstname}', 
-//         '${contact.lastname}', '${contact.email}', 
-//         '${contact.phonenumber}', '${contact.contact_id}');" 
-//         class="edit-button";><i class="fa-solid fa-pen-to-square edit-button"></i>Edit</button>
-//         <button onclick="getId('${contact.contact_id}');" 
-//         class='delete-contact';><i class="fa-solid fa-trash delete-contact"></i>Delete</button>`
-
-//         // append contactElement to contactList
-//         contactList.appendChild(contactElement);
-//     });
-// }
 
 // get search input element
 const searchInput = document.getElementById('searchInput');
@@ -173,3 +228,23 @@ document.addEventListener('DOMContentLoaded', function () {
     // inital fetch to display all contacts on the first page
     fetchContactsForPage('', currentPage);
 })
+
+
+
+// Wait for the document to fully load
+document.addEventListener("DOMContentLoaded", function() {
+    requestAnimationFrame(function() {
+
+        const fadeElements = document.querySelectorAll(".fadeable");
+
+        fadeElements.forEach(function(element, index) {
+
+            const delay = index * 80; // rate at which elements are faded in
+
+            setTimeout(function() {
+                element.classList.add("fade-in");
+
+            }, delay);
+        })
+    })
+});

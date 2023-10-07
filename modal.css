@@ -137,6 +137,17 @@ input:hover {
               0 0 10px rgba(94, 206, 99, 1);
 }
 
+/* save button active styling */
+.save-btn:active {
+  background-color: rgb(175, 255, 179);
+  border-style: none;
+  color: #fff;
+  box-shadow: 0 0 5px rgb(175, 255, 179),
+              0 0 5px rgb(175, 255, 179),
+              0 0 10px rgb(175, 255, 179),
+              0 0 10px rgb(175, 255, 179);
+}
+
 /* icon in input field styling */
 .modal-input i {
   position: absolute;

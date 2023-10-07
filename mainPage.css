@@ -30,11 +30,6 @@
     opacity: 1;
   }
 
-  .maincontainer {
-    /* width: 1000px;
-    height: 1000px; */
-  }
-
   .topbar {
     display: flex; /* helps display children side by side */
     align-items: center; /* vertically center items in topbar */
@@ -46,12 +41,12 @@
     background-color: rgba(114, 137, 218, 1);
     color: #fff;
     border: none;
-    /* border-radius: 5px; */
     border-radius: 50px;
     box-shadow: 0 0 10px rgba(0, 0, 0, .2);
     cursor: pointer;
     font-size: 16px;
-    margin-right: 100px; /* space between button and input */
+    width: 300px;
+    margin-right: 100px;
     transition: background-color 0.2s ease-in-out;
   }
 
@@ -65,52 +60,92 @@
     padding-right: 6px;
   }
 
-  #searchInput {
-    flex: 1;
-    background: transparent;
-    border: 2px solid rgba(255, 255, 255, .2);
-    backdrop-filter: blur(15px);
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
-    color: #fff;
-    border-radius: 100px;
-    padding: 10px 50px;
-  }
+#searchForm {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#searchInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color: #fff;
+  border-radius: 40px;
+  height: 48px;
+  width: 300px;
+  transition: width 0.75s ease-in-out;
+  font-size: 16px;
+  padding-left: 40px;
+
+}
+
+/* styling placeholder text */
+#searchInput::placeholder {
+  color: #ffffffc4;
+  transition: transform 0.3s ease-in-out;
+}
+
+/* style the search icon */
+#searchForm i.fa-magnifying-glass {
+  position: absolute;
+  left: 18px;
+  padding-right: 100px;
+  top: 17px;
+  font-size: 14px;
+  color: #ffffffc4;
+  pointer-events: none;
+}
+
+#searchInput:hover {
+  background-color: rgba( 114, 137, 218, 0.2);
+}
+
+#searchInput:focus::placeholder {
+  transform: translateY(-30px);
+}
+
+/* input element focused */
+#searchInput:focus {
+  border-color: rgba( 114, 137, 218, 1);
+  width: 30vw;
+}
 
   /* CSS for pagination */
 #paginationControls {
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
   color: #fff;
 }
 
 .page-link {
-  margin-right: 5px;
   cursor: pointer;
+  font-size: 18px;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(15px);
+  width: 40px;
+  height: 60px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
 }
 
 .current-page {
-  font-weight: bold;
-  background-color: rgb(76, 100, 189);
+  /* font-weight: bold; */
+  background-color: rgba(114, 137, 218, 1);
+  border-color: rgba(114, 137, 218, 1);
 }
 
-/* #contactList {
-  color: #fff;
-  max-width: 100%;
-  height: 400px;
-  padding: 10px;
-  overflow: auto;
-  box-sizing: border-box;
-} */
-
-/* @media (max-width: 600px) {
-  #contactList {
-    width: 100%;
-    height: auto;
-    max-height: none;
-  }
-} */
 
 #contactTable th, #contactTable td {
-  /* width: 150px; */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -119,11 +154,188 @@
   text-align: center;
 }
 
+#contactTable th {
+  text-decoration: underline;
+}
+
+/* name and email fields */
+#contactTable th:nth-child(1), #contactTable td:nth-child(1),
+#contactTable th:nth-child(2), #contactTable td:nth-child(2) {
+  /* min-width: 300px; */
+  min-width: 20vw;
+}
+
+/* phone number and date created fields */
+#contactTable th:nth-child(3), #contactTable td:nth-child(3),
+#contactTable th:nth-child(4), #contactTable td:nth-child(4) {
+  min-width: 200px;
+}
+
+/* less space for edit and delete columns */
+#contactTable th:nth-child(5), #contactTable td:nth-child(5), /* edit column */
+#contactTable th:nth-child(6), #contactTable td:nth-child(6) { /* delete column */
+  min-width: 80px;
+  max-width: 80px;
+}
+
+.tableContainer {
+  border: 2px solid rgba(255, 255, 255, .2);
+  backdrop-filter: blur(15px);
+  border-radius: 10px;
+  border-radius: 25px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  padding: 30px;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
+  /* width: 90%; */
+  font-size: 100px;
+  /* align-self: center; */
+  min-height: 575px; /* how much space the table takes up vertically */
+}
+
 #contactTable {
-  table-layout: fixed;
+  /* table-layout: fixed; */
   color: #fff;
+  border-collapse: collapse;
+  font-size: 18px;
+  width: 100%;
+  /* width: 100%;
+  margin-left: 100px; */
 }
 
 #contactTable th, #contactTable td {
-  padding: 5px;
+  padding: 10px;
+  border-right: hidden;
+  border-left: hidden;
+
+  /* white-space: nowrap;
+  overflow: none;
+  text-overflow: ellipsis;
+  max-width: none; */
+}
+
+#contactTable th {
+  padding-bottom: 30px;
+}
+
+.edit-button-styling, .delete-contact-styling {
+  display: inline-block;
+  width: 55px;
+  height: 35px;
+  border: none;
+  border-radius: 50px;
+  background-color: rgb(114, 137, 218, 0.7);
+  color: #fff;
+  line-height: 50px; /* vertically center text within the button */
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, color 0.3s ease-in-out, box-shadow 0.2s ease-in-out;
+  font-size: 16px;
+}
+
+/* Applied on button hover */
+.delete-contact-styling:hover {
+  background-color: rgb(255, 96, 96);
+  color: #36393e;
+}
+
+.edit-button-styling:hover {
+  background-color: rgb(255, 234, 112);
+  color: #36393e;
+}
+
+#contactTable tr {
+  padding: 50px;
+  border-collapse: separate;
+  border-spacing: 0 15px;
+  border-top: 10px;
+  border-radius: 100px;
+}
+
+/* Apply styling to rows in tbody when hovered */
+#contactTable tbody tr:hover {
+  background-color: rgba(114, 137, 218, 0.3);
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  /* animation: bounce 0.5s ease-in-out; */
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  } 
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+/* when a row is clicked */
+#contactTable tbody tr:active {
+  background-color: rgba(144, 189, 241, 0.3);
+}
+
+/* delete contact button styling on hover */
+.delete-contact-styling:hover {
+  background-color: rgb(255, 96, 96);
+  border-style: none;
+  color: #36393e;
+  box-shadow: 0 0 5px rgb(255, 96, 96),
+              0 0 5px rgb(255, 96, 96),
+              0 0 10px rgb(255, 96, 96),
+              0 0 10px rgb(255, 96, 96);
+}
+
+/* delete contact button styling on hover */
+.delete-contact-styling:active {
+  background-color: rgb(255, 24, 24);
+  box-shadow: 0 0 5px rgb(255, 24, 24),
+              0 0 5px rgb(255, 24, 24),
+              0 0 10px rgb(255, 24, 24),
+              0 0 10px rgb(255, 24, 24);
+}
+
+
+/* edit contact button styling on hover */
+.edit-button-styling:hover {
+  background-color: rgb(255, 234, 112);
+  border-style: none;
+  color: #36393e;
+  box-shadow: 0 0 5px rgb(255, 234, 112),
+              0 0 5px rgb(255, 234, 112),
+              0 0 10px rgb(255, 234, 112),
+              0 0 10px rgb(255, 234, 112);
+}
+
+/* edit contact button styling on hover */
+.edit-button-styling:active {
+  background-color: rgb(236, 206, 33);
+  box-shadow: 0 0 5px rgb(236, 206, 33),
+              0 0 5px rgb(236, 206, 33),
+              0 0 10px rgb(236, 206, 33),
+              0 0 10px rgb(236, 206, 33);
+}
+
+/* input element focused */
+input:focus {
+  border-color: rgba( 114, 137, 218, 1);
+}
+
+.disabled {
+  color: rgb(128, 128, 128);
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1050px) {
+  .add-contact-container {
+    width: 35vw;
+    min-width: 180px;
+  }
+
+  #contactTable {
+    width: 80%;
+    /* font-size: 1px; */
+    margin-left: 10vw;
+  }
+
+  /* .tableContainer {
+    width: 10vw;
+  } */
 }
