@@ -1,6 +1,6 @@
 <?php
 // this page is specifically for handling backend login logic
-include 'connection.php'; // ensures we are able to connect to the database before continuing
+include '../config/connection.php'; // ensures we are able to connect to the database before continuing
 
 // starts user session if it has not already been started
 if (session_status() == PHP_SESSION_NONE) {

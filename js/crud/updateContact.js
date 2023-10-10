@@ -79,7 +79,7 @@ editForm.addEventListener('submit', function (event) {
 
   // send data to server if we have valid input
   if (validEntries(newFirstname, newLastname, newEmail, newPhonenumber, 'editForm')) {
-    fetch('updateContact.php', {
+    fetch('/php/crud/updateContact.php', {
       method: 'POST',
       body: JSON.stringify({
         contact_id: contact_id,

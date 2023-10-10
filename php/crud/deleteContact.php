@@ -1,5 +1,5 @@
 <?php
-include 'connection.php'; // ensures we are connected to database
+include '../config/connection.php'; // ensures we are connected to database
 
 // starts user session if it has not already been started
 if (session_status() == PHP_SESSION_NONE) {
@@ -22,16 +22,10 @@ $data = file_get_contents('php://input');
 $jsonData = json_decode($data, true); // true as second parameter returns an associative array
 
 // we want to get the id associated with the contact
-$contact_id = $jsonData['contact_id'];
-
-// access the information of the contact the user wants to modify
-$newFirstname = $jsonData['newFirstname'];
-$newLastname = $jsonData['newLastname'];
-$newEmail = $jsonData['newEmail'];
-$newPhonenumber = $jsonData['newPhonenumber'];
+$contact_id = $jsonData['deleteContact'];
 
 // query that updates the contact information as long as it matches the current user and the contact's ID
-$sql = "UPDATE contacts SET firstname='$newFirstname', lastname='$newLastname', email='$newEmail', phonenumber='$newPhonenumber' WHERE user='$currUser' AND contact_id='$contact_id'";
+$sql = "DELETE FROM contacts WHERE user='$currUser' AND contact_id='$contact_id'";
 
 $conn->query($sql); // runs query
 
@@ -45,7 +39,8 @@ if ($conn->affected_rows > 0) { // if the query affected at least one row
         echo json_encode(["success" => false, "message" => "Database error: " . $conn->error]);
     } else {
         // Otherwise, the contact likely doesn't exist
-        echo json_encode(["success" => false, "message" => "Contact not found or no changes were made"]);
+        // echo json_encode(["success" => false, "message" => "Contact not found or no changes were mad" . $contact_id]);
+        echo json_encode(["success" => false, "message" => $contact_id]);
     }
     exit();
 }

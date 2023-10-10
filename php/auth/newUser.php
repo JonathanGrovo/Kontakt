@@ -1,6 +1,6 @@
 <?php
 // this page is specifically for backend registration logic
-include 'connection.php'; // ensure that we can connect to the database before we continue
+include '../config/connection.php'; // ensure that we can connect to the database before we continue
 
 // starts user session if it has not already been started
 if (session_status() == PHP_SESSION_NONE) {

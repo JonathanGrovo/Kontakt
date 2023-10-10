@@ -4,7 +4,7 @@ let currentPage = 1;
 // function that fetches contacts for a specific page
 async function fetchContactsForPage(searchVal, currentPage) {
     try {
-        const response = await fetch('readContacts.php', {
+        const response = await fetch('/php/crud/readContacts.php', {
             method: 'POST',
             body: JSON.stringify({ searchVal, currentPage }),
             headers: {

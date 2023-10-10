@@ -44,7 +44,7 @@ function registerUser() {
 
     // fetch is an API that is used to make an asynchronous HTTP POST request
     // from the register.php page
-    fetch("newUser.php", {
+    fetch("/php/auth/newUser.php", {
         method: "POST",
         // username and password are sent as a JSON object in request body
         body: JSON.stringify({username, password}),

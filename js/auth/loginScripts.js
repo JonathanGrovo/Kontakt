@@ -6,7 +6,7 @@ function loginUser() {
 
     // fetch is an API that is used to make an asynchronous HTTP POST request
     // from the login.php page
-    fetch("login.php", {
+    fetch("/php/auth/login.php", {
         method: "POST",
         // username and password are sent as a JSON object in request body
         body: JSON.stringify({username, password}),

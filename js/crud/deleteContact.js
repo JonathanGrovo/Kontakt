@@ -22,7 +22,7 @@ deleteForm.addEventListener('submit', function (event) {
 
   console.log(deleteContact);
 
-  fetch('deleteContact.php', {
+  fetch('/php/crud/deleteContact.php', {
     method: 'POST',
     // we want to send our id as JSON
     body: JSON.stringify({ deleteContact }),

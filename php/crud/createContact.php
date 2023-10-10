@@ -1,5 +1,5 @@
 <?php
-include 'connection.php'; // ensures we are connected to database
+include '../config/connection.php'; // ensures we are connected to database
 
 // starts user session if it has not already been started
 if (session_status() == PHP_SESSION_NONE) {

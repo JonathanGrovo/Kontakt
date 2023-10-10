@@ -72,7 +72,7 @@ addForm.addEventListener('submit', function (event) {
   // send data to server if we have valid input
   if (validEntries(firstname, lastname, email, phonenumber, 'addForm')) {
     // POST request to php script using fetch
-    fetch('createContact.php', {
+    fetch('/php/crud/createContact.php', {
       method: 'POST',
       // we want to send our contact information as a JSON object
       body: JSON.stringify(data),

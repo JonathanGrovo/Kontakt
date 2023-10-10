@@ -9,9 +9,9 @@
     <!-- icon that appears in tab -->
     <link rel="icon" type="image/x-icon" href="media/favicon.ico" />
     <!-- sheets used for styling the page -->
-    <link rel="stylesheet" href="login.css" />
-    <link rel="stylesheet" href="modal.css" />
-    <link rel="stylesheet" href="mainPage.css" />
+    <link rel="stylesheet" href="styles/general.css" />
+    <link rel="stylesheet" href="styles/modal.css" />
+    <link rel="stylesheet" href="styles/mainPage.css" />
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&display=swap"
@@ -37,7 +37,7 @@
     <!-- canvas for particles -->
     <canvas id="backgroundCanvas"></canvas>
     <!-- The hyperlink just runs logout.php -->
-    <a id="logoutButton" href="logout.php"
+    <a id="logoutButton" href="php/auth/logout.php"
       ><i class="fa-solid fa-right-from-bracket"></i>
       <span class="logoutButtonText">Logout</span></a
     >
@@ -234,21 +234,21 @@
     <!-- =============================== scripts ================================ -->
 
     <!-- script for background animation -->
-    <script src="particles.js"></script>
+    <script src="js/styling/particles.js"></script>
 
     <!-- script for creating contacts -->
-    <script src="createContact.js"></script>
+    <script src="js/crud/createContact.js"></script>
 
     <!-- script for reading contacts -->
-    <script src="readContacts.js"></script>
+    <script src="js/crud/readContacts.js"></script>
 
     <!-- script for updating contacts -->
-    <script src="updateContact.js"></script>
+    <script src="js/crud/updateContact.js"></script>
 
     <!-- script for deleting contacts -->
-    <script src="deleteContact.js"></script>
+    <script src="js/crud/deleteContact.js"></script>
 
     <!-- script for checking if entries are valid -->
-    <script src="regexCheck.js"></script>
+    <script src="js/validation/regexCheck.js"></script>
   </body>
 </html>
